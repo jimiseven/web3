@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPUTACIÓN E INFORMÁTICA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>COMPUTACIÓN E INFORMÁTICA</h1>
+        <p>¿qué son y en qué se diferencian?</p>
+    </header>
+
+    <main>
+        <section class="seccion-cards">
+            <div class="card">
+                <img src="img/img1.jpg" id = "card1">
+                <h3>Subtítulo 1</h3>
+                <p>Descripción de la imagen 1.</p>
+                <a href="#">Ir a</a>
+            </div>
+            <div class="card">
+                <img src="img/img2.jpg" id = "card2">
+                <h3>Subtítulo 2</h3>
+                <p>Descripción de la imagen 2.</p>
+                <a href="#">Ir a</a>
+            </div>
+            <div class="card">
+                <img src="img/img3.jpg" id = "card3">
+                <h3>Subtítulo 3</h3>
+                <p>Descripción de la imagen 3.</p>
+                <a href="#">Ir a</a>
+            </div>
+        </section>
+
+        <section class="seccion-lorem-ipsum">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed semper ante vitae sapien ultrices, ac luctus
+                orci aliquam. Donec nec velit vel arcu pharetra pulvinar sit amet in enim. Fusce sed est sit amet magna
+                tincidunt ullamcorper. Sed ultrices, dui et congue aliquam, mauris metus
+                laoreet leo, nec tincidunt sem libero eget lorem. Donec feugiat erat sed arcu aliquam, vel mattis risus
+                pretium. Mauris a augue et nibh euismod porttitor.</p>
+        </section>
+        <section class="seccion-ejemplos">
+            <h2>Ejemplos de Lorem Ipsum</h2>
+            <ul>
+                <div id="arreglo-container">
+                    <ul id="arreglo-lista"></ul>
+                  </div>
+            </ul>
+        </section>
+
+
+        </section>
+
+        <section class="cambios">
+            <section class="seccion-botones">
+                <section class="tit">
+                    <h2 class="tit.img">Cambiar Imagenes</h2>
+                </section>
+                <section class="btn">
+                    <button onclick="cambiarImagen1()">Card 1</button>
+                    <button onclick="cambiarImagen2()">Card 2</button>
+                    <button onclick="cambiarImagen3()">Card 3</button>
+                </section>
+            </section>
+            <section class="seccion-botones">
+                <section class="tit">
+                    <h2>Cambiar Texto</h2>
+                </section>
+                <section class="btn">
+                    <button id="btnToggleBold">Negrita</button>
+                    <button>Subtitulo</button>
+                    <button id="btnToggleColor">Color</button>
+                </section>
+            </section>
+            <section class="seccion-botones">
+                <section class="tit">
+                    <h2>Cambiar Lista</h2>
+                </section>
+                <section class="btn">
+                    <input type="text" id="valorNuevo" placeholder="Ingresar Valor">
+                    <button id="btnAgregarInicio">Inserta al Principio</button>
+                    <button id="btnAgregarFinal">Inserta al Final</button>
+                    <button id="btnEliminarInicio">Eliminar Inicio</button>
+                    <button id="btnEliminarFinal">Eliminar Ultimo</button>
+                </section>
+            </section>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mi Nombre</p>
+    </footer>
+</body>
+
+<script src="changes.js"></script> </body>
+
+</html>
