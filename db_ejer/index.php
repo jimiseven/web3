@@ -12,9 +12,10 @@
 </head>
 <body>
     <?php 
-        $resultado = $conexion -> query("select * from pokemon");
-
+        $resultado = $conexion -> query("select * from persona");
+        
         while($row = mysqli_fetch_array($resultado)){
+            
             echo $row["nombre"]."<br/>";
         }
      ?>
