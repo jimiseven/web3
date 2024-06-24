@@ -12,11 +12,11 @@
 </head>
 <body>
     <?php 
-        $resultado = $conexion -> query("select * from persona");
+        $resultado = $conexion -> query("select * from floreria");
         
         while($row = mysqli_fetch_array($resultado)){
             
-            echo $row["nombre"]."<br/>";
+            echo $row["nombreFloreria"]."<br/>";
         }
      ?>
 </body>

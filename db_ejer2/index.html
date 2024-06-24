@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crear Florería</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">  <h1>Crear Nueva Florería</h1>
+    <form action="guardarElementos.php" method="post" class="row">  <div class="col-md-6 mb-3">  <label for="nombreFloreria" class="form-label">Nombre de la Florería:</label>
+        <input type="text" class="form-control" id="nombreFloreria" name="nombreFloreria" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="fechaCreacion" class="form-label">Fecha de Creación:</label>
+        <input type="date" class="form-control" id="fechaCreacion" name="fechaCreacion" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="colorPuerta" class="form-label">Color de la Puerta:</label>
+        <input type="text" class="form-control" id="colorPuerta" name="colorPuerta" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="eslogan" class="form-label">Eslogan:</label>
+        <input type="text" class="form-control" id="eslogan" name="eslogan" required>
+      </div>
+      <div class="col-12">  <input type="submit" value="Guardar" class="btn btn-primary">
+      </div>
+    </form>
+    <br>
+    <a href="listarElementos.php" class="btn btn-secondary">Listar Florerías</a><br>
+  </div>
+</body>
+</html>
