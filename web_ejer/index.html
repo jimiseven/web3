@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Florerias</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h1 class="text-center mb-4">Re Nueva Florería</h1>
+    <form action="guardarElementos.php" method="post" class="row justify-content-center">
+      <div class="col-md-8 mb-3">
+        <label for="nombreFloreria" class="form-label">Nombre de la Florería:</label>
+        <input type="text" class="form-control" id="nombreFloreria" name="nombreFloreria" required>
+      </div>
+      <div class="col-md-8 mb-3">
+        <label for="fechaCreacion" class="form-label">Fecha de Creación:</label>
+        <input type="date" class="form-control" id="fechaCreacion" name="fechaCreacion" required>
+      </div>
+      <div class="col-md-8 mb-3">
+        <label for="localizacion" class="form-label">Localizacion:</label>
+        <input type="text" class="form-control" id="localizacion" name="localizacion" required>
+      </div>
+      <div class="col-md-8 mb-3">
+        <label for="eslogan" class="form-label">Eslogan:</label>
+        <input type="text" class="form-control" id="eslogan" name="eslogan" required>
+      </div>
+      <div class="col-12 text-center">
+        <input type="submit" value="Guardar" class="btn btn-primary">
+      </div>
+    </form>
+    <br>
+    <a href="listarElementos.php" class="btn btn-outline-primary d-block mx-auto">Listar Florerías</a><br>
+  </div>
+</body>
+</html>
+
