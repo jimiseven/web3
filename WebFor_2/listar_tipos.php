@@ -22,70 +22,66 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Floreria</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Registro Flores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="listado.php">Listado Flores</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="registrar_tipo.html">Registro Tipos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="listar_tipos.php">Lista Tipos</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-    <div class="container">
-        <h2>Listado de Tipos de Flores</h2>
-
-        <?php
+<ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">REGISTRAR FLORES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="listado.php">FLORES REGISTRADAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="registrar_tipo.html">REGISTRAR TIPOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="listar_tipos.php">TIPOS REGISTRADOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="inventario.php">INVENTARIO GENERAL</a>
+        </li>
+      </ul>
+      <div class="container">
+  <div class="card">
+    <div class="card-header">
+      <h2>Listado de Tipos de Flores</h2>
+    </div>
+    <div class="card-body">
+      <?php
         // Check if query was successful
         if ($result) {
-            echo "<table class='table table-striped'>";
-            echo "<thead>";
+          echo "<table class='table table-striped'>";
+          echo "<thead>";
+          echo "<tr>";
+          echo "<th>ID</th>";
+          echo "<th>Nombre del Tipo</th>";
+          echo "<th>Clima</th>";
+          echo "<th>Observación</th>";
+          echo "</tr>";
+          echo "</thead>";
+          echo "<tbody>";
+
+          // Fetch each type row and display data in table cells
+          while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
-            echo "<th>ID</th>";
-            echo "<th>Nombre del Tipo</th>";
-            echo "<th>Clima</th>";
-            echo "<th>Observación</th>";
+            echo "<td>" . $row["idTipo"] . "</td>";
+            echo "<td>" . $row["nombreTipo"] . "</td>";
+            echo "<td>" . $row["clima"] . "</td>";
+            echo "<td>" . $row["observacion"] . "</td>";
             echo "</tr>";
-            echo "</thead>";
-            echo "<tbody>";
+          }
 
-            // Fetch each type row and display data in table cells
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<tr>";
-                echo "<td>" . $row["idTipo"] . "</td>";
-                echo "<td>" . $row["nombreTipo"] . "</td>";
-                echo "<td>" . $row["clima"] . "</td>";
-                echo "<td>" . $row["observacion"] . "</td>";
-                echo "</tr>";
-            }
+          echo "</tbody>";
+          echo "</table>";
 
-            echo "</tbody>";
-            echo "</table>";
-
-            // Free result set
-            mysqli_free_result($result);
+          // Free result set
+          mysqli_free_result($result);
         } else {
-            echo "<div class='alert alert-danger'>Error retrieving type data: " . mysqli_error($conn) . "</div>";
+          echo "<div class='alert alert-danger'>Error retrieving type data: " . mysqli_error($conn) . "</div>";
         }
-        ?>
-
+      ?>
     </div>
+  </div>
+</div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"></script>
 </body>

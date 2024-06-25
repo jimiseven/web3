@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-06-2024 a las 23:37:34
+-- Tiempo de generación: 26-06-2024 a las 00:23:06
 -- Versión del servidor: 10.4.25-MariaDB
 -- Versión de PHP: 8.1.10
 
@@ -50,6 +50,19 @@ INSERT INTO `flor` (`idFlor`, `nombreFlor`, `cantidadCosecha`, `costo`, `idTipo`
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `informe`
+--
+
+CREATE TABLE `informe` (
+  `idInforme` int(11) NOT NULL,
+  `nombreInforme` varchar(25) NOT NULL,
+  `fechaInforme` date NOT NULL,
+  `idFlor` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tipo`
 --
 
@@ -81,6 +94,13 @@ ALTER TABLE `flor`
   ADD KEY `FkTipo` (`idTipo`);
 
 --
+-- Indices de la tabla `informe`
+--
+ALTER TABLE `informe`
+  ADD PRIMARY KEY (`idInforme`),
+  ADD KEY `FkFlor` (`idFlor`);
+
+--
 -- Indices de la tabla `tipo`
 --
 ALTER TABLE `tipo`
@@ -97,6 +117,12 @@ ALTER TABLE `flor`
   MODIFY `idFlor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT de la tabla `informe`
+--
+ALTER TABLE `informe`
+  MODIFY `idInforme` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `tipo`
 --
 ALTER TABLE `tipo`
@@ -111,6 +137,12 @@ ALTER TABLE `tipo`
 --
 ALTER TABLE `flor`
   ADD CONSTRAINT `flor_ibfk_1` FOREIGN KEY (`idTipo`) REFERENCES `tipo` (`idTipo`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `informe`
+--
+ALTER TABLE `informe`
+  ADD CONSTRAINT `informe_ibfk_1` FOREIGN KEY (`idFlor`) REFERENCES `flor` (`idFlor`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
