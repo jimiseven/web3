@@ -22,7 +22,32 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Floreria</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.html">Registro Flores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listado.php">Listado Flores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrar_tipo.html">Registro Tipos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_tipos.php">Lista Tipos</a>
+                    </li>
+                </ul>
 
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <h2>Listado de Tipos de Flores</h2>
 
