@@ -18,7 +18,7 @@
 <?php
 
 // Conexión a la base de datos
-$db = new mysqli('localhost', 'root', '', 'Floreria');
+$db = new mysqli('localhost', 'root', '', 'test2');
 
 // Comprobar la conexión
 if ($db->connect_error) {
@@ -28,10 +28,10 @@ if ($db->connect_error) {
 // Insertar datos en la tabla `floreria`
 $nombreFloreria = $_POST['nombreFloreria'];
 $fechaCreacion = $_POST['fechaCreacion'];
-$localizacion = $_POST['localizacion'];
+$colorPuerta = $_POST['colorPuerta'];
 $eslogan = $_POST['eslogan'];
 
-$sql = "INSERT INTO floreria (nombreFloreria, fechaCreacion, localizacion, eslogan) VALUES ('$nombreFloreria', '$fechaCreacion', '$localizacion', '$eslogan')";
+$sql = "INSERT INTO floreria(nombreFloreria, fechaCreacion, colorPuerta, eslogan) VALUES ('$nombreFloreria', '$fechaCreacion', '$colorPuerta', '$eslogan')";
 
 if ($db->query($sql) === TRUE) {
     echo "Florería creada con éxito";

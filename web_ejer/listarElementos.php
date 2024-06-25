@@ -24,7 +24,7 @@
                 <?php
 
                 // Conexión a la base de datos
-                $db = new mysqli('localhost', 'root', '', 'Floreria');
+                $db = new mysqli('localhost', 'root', '', 'test2');
 
                 // Comprobar la conexión
                 if ($db->connect_error) {
@@ -42,7 +42,7 @@
                         echo "<td>" . $row['cod_floreria'] . "</td>";
                         echo "<td>" . $row['nombreFloreria'] . "</td>";
                         echo "<td>" . $row['fechaCreacion'] . "</td>";
-                        echo "<td>" . $row['localizacion'] . "</td>";
+                        echo "<td>" . $row['colorPuerta'] . "</td>";
                         echo "<td>" . $row['eslogan'] . "</td>";
                         echo "</tr>";
                     }
