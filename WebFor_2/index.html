@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de flores</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Floreria</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Acerca de</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contacto</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Más opciones
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Subopción 1</a></li>
+                            <li><a class="dropdown-item" href="#">Subopción 2</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Subopción 3</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1>Registro de flores</h1>
+
+        <form action="guardar.php" method="post" class="row">
+            <div class="col-md-6">
+                <label for="nombreFlor">Nombre de la flor:</label>
+                <input type="text" id="nombreFlor" name="nombreFlor" class="form-control" required>
+
+                <label for="cantidadCosecha">Cantidad de cosecha:</label>
+                <input type="number" id="cantidadCosecha" name="cantidadCosecha" class="form-control" required>
+
+                <label for="costo">Costo:</label>
+                <input type="number" id="costo" name="costo" class="form-control" required>
+            </div>
+
+            <div class="col-md-6">
+                <label for="idTipo">Tipo de flor:</label>
+                <select id="idTipo" name="idTipo" class="form-select" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+
+
+                <label for="fechaProduccion">Fecha de producción:</label>
+                <input type="date" id="fechaProduccion" name="fechaProduccion" class="form-control" required>
+            </div>
+
+
+            <div class="col-12 mt-3">
+                <button type="submit" class="btn btn-primary">Registrar flor</button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <a href="listado.php">Listado</a>
+    <br>
+    <a href="registrar_tipo.html">Registrar Tipo</a>
+
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>

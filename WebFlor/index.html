@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de registro de flores</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Registro de flores</h1>
+        <form action="guardarFlor+.php" method="post">
+            <div class="form-group">
+                <label for="nombreFlor">Nombre de la flor:</label>
+                <input type="text" class="form-control" id="nombreFlor" name="nombreFlor" required>
+            </div>
+            <div class="form-group">
+                <label for="cantidadCosecha">Cantidad de cosecha:</label>
+                <input type="number" class="form-control" id="cantidadCosecha" name="cantidadCosecha" required>
+            </div>
+            <div class="form-group">
+                <label for="costo">Costo:</label>
+                <input type="number" class="form-control" id="costo" name="costo" required>
+            </div>
+            <div class="form-group">
+                <label for="fechaProduccion">Fecha de cosecha:</label>
+                <input type="date" class="form-control" id="fechaProduccion" name="fechaProduccion" required>
+            </div>
+            <div class="form-group">
+                <label for="nombreTipo">Tipo de flor:</label>
+                <select class="form-control" id="nombreTipo" name="nombreTipo" required>
+                    <option value="">Seleccione un tipo de flor</option>
+                    <option value="1">Hortencias</option>
+                    <option value="2">Rosas</option>
+                    </select>
+            </div>             
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+    <a href="listar_flores.php" class="btn btn-outline-primary d-block mx-auto">Listar Florerías</a><br>
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
