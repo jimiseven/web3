@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Carnes</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .hero {
+            background: url('imgs/logo.jpg') no-repeat center center;
+            background-size: cover;
+            height: 60vh;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: relative;
+        }
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        .hero h1 {
+            font-size: 3rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+        }
+        .card img {
+            max-height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gestión de Carnes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="php/lista_carnes.php">Ver Carnes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="php/lista_proveedores.php">Ver Proveedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registroCarnes.html">Registrar Carne</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registroCarnes.html">Registrar Proveedor</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenido a Gestión de Carnes</h1>
+            <p>Gestiona tus productos y proveedores fácilmente</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imgs/carne1.jpg" class="card-img-top" alt="Registrar Carne">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Los mejores cortes</h5>
+                        <p class="card-text">Obtén acceso a los mejores cortes.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imgs/carne2.webp" class="card-img-top" alt="Registrar Proveedor">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Carne especial</h5>
+                        <p class="card-text">Sorprende a tu familia e invitados</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="imgs/carne3.webp" class="card-img-top" alt="Ver Carnes y Proveedores">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Ver Carnes y Proveedores</h5>
+                        <p class="card-text">Consulta la lista de carnes disponibles.</p>
+                        <a href="php/lista_carnes.php" class="btn btn-primary">Ver Carnes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>&copy; 2024 Gestión de Carnes. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

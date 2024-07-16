@@ -14,6 +14,31 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Gestión de Carnes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="php/lista_carnes.php">Ver Carnes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="php/lista_proveedores.php">Ver Proveedores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registroCarnes.html">Registrar Carne</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registroCarnes.html">Registrar Proveedor</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container mt-5">
         <h1>Lista de Proveedores</h1>
         <table class="table table-striped">
