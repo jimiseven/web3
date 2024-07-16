@@ -17,23 +17,33 @@ $result = mysqli_query($conn, $sql);
 </head>
 
 <body>
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">REGISTRAR CARNES</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="listado.php">CARNES REGISTRADAS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="registrar_tipo_carnes.html">REGISTRAR TIPOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="listar_tipos.php">TIPOS REGISTRADOS</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="inventario.php">INVENTARIO GENERAL</a>
-        </li>
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+        <a class="navbar-brand" href="index.html">CarnesDelicias</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="registrar_carnes.html">REGISTRAR CARNES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listado_carnes.php">CARNES REGISTRADAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrar_tipo_carnes.html">REGISTRAR TIPOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_tipos.php">TIPOS REGISTRADOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_ingresos_agrupados.php">INVENTARIO GENERAL</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="card mt-4">
             <div class="card-header">

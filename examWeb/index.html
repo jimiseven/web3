@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page de Carnes</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Archivo CSS adicional si es necesario -->
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CarnesDelicias</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="registrar_carnes.html">REGISTRAR CARNES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listado_carnes.php">CARNES REGISTRADAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrar_tipo_carnes.html">REGISTRAR TIPOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_tipos.php">TIPOS REGISTRADOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_ingresos_agrupados.php">INVENTARIO GENERAL</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-primary text-white text-center py-5">
+        <div class="container">
+            <h1>Bienvenidos a CarnesDelicias</h1>
+            <p class="lead">Las mejores carnes frescas y de calidad directamente a tu mesa</p>
+        </div>
+    </header>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center">Nuestros Productos</h2>
+            <p class="text-center mb-5">Ofrecemos una amplia variedad de carnes frescas y de alta calidad.</p>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="imgs/carne1.jpg" class="card-img-top" alt="Carne ">
+                        <div class="card-body">
+                            <h5 class="card-title">Carne de Especial</h5>
+                            <p class="card-text">Carne de res de la más alta calidad, ideal para tus mejores platillos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="imgs/carne3.jpg" class="card-img-top" alt="Carne">
+                        <div class="card-body">
+                            <h5 class="card-title">T-bone steak</h5>
+                            <p class="card-text">El T-bone es un corte que reúne dos piezas de carne suculentas.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="imgs/carne2.jpg" class="card-img-top" alt="Carne de pollo">
+                        <div class="card-body">
+                            <h5 class="card-title">Ribeye</h5>
+                            <p class="card-text">El ojo de costilla es un filete extraído de la sección de la costilla de ternera, entre las costillas seis y la doce.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center">Sobre Nosotros</h2>
+            <p class="text-center mb-5">Somos una empresa dedicada a ofrecer los mejores productos cárnicos del mercado.</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Misión</h3>
+                    <p>Brindar carnes de la más alta calidad, garantizando frescura y sabor en cada bocado.</p>
+                </div>
+                <div class="col-md-6">
+                    <h3>Visión</h3>
+                    <p>Ser líderes en el mercado de carnes, reconocidos por nuestro compromiso con la calidad y el servicio al cliente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p>&copy; 2024 CarnesDelicias. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
