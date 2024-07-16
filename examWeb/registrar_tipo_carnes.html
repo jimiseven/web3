@@ -42,7 +42,7 @@
                 <h2>Registrar Tipo de Carne</h2>
             </div>
             <div class="card-body">
-                <form action="registrar_tipo_carnes.php" method="post">
+                <form id="registrarTipoCarneForm">
                     <div class="mb-3">
                         <label for="tipoCarne" class="form-label">Tipo de Carne:</label>
                         <input type="text" class="form-control" id="tipoCarne" name="tipoCarne" required>
@@ -53,7 +53,56 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registroModalLabel">Registro de Tipo de Carne</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Tipo de Carne:</strong> <span id="modalTipoCarne"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="confirmarRegistro">Confirmar Registro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('registrarTipoCarneForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var tipoCarne = document.getElementById('tipoCarne').value;
+
+            document.getElementById('modalTipoCarne').textContent = tipoCarne;
+
+            var registroModal = new bootstrap.Modal(document.getElementById('registroModal'));
+            registroModal.show();
+        });
+
+        document.getElementById('confirmarRegistro').addEventListener('click', function () {
+            var form = document.getElementById('registrarTipoCarneForm');
+            var formData = new FormData(form);
+
+            fetch('registrar_tipo_carnes.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                var registroModal = bootstrap.Modal.getInstance(document.getElementById('registroModal'));
+                registroModal.hide();
+                alert('Tipo de carne registrado exitosamente');
+                form.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
 </body>
 
 </html>
