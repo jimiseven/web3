@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nuevo Stock</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">El Buen Corte</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="carnes_registradas.html">Carnes Registradas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrar_stock.html">Registrar Nuevo Stock</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Formulario de Registro -->
+    <div class="container mt-5">
+        <h2>Registrar Nuevo Stock de Carne</h2>
+        <form action="procesar_registro.php" method="POST">
+            <div class="form-group">
+                <label for="nombreCarne">Nombre de la Carne</label>
+                <input type="text" class="form-control" id="nombreCarne" name="nombreCarne" required>
+            </div>
+            <div class="form-group">
+                <label for="cantidadProduccion">Cantidad de Producción</label>
+                <input type="text" class="form-control" id="cantidadProduccion" name="cantidadProduccion" required>
+            </div>
+            <div class="form-group">
+                <label for="costo">Costo</label>
+                <input type="number" class="form-control" id="costo" name="costo" required>
+            </div>
+            <div class="form-group">
+                <label for="nombreTipo">Tipo de Carne</label>
+                <select class="form-control" id="nombreTipo" name="nombreTipo" required>
+                    <?php include 'obtener_tipos.php'; ?>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fechaProduccion">Fecha de Producción</label>
+                <input type="date" class="form-control" id="fechaProduccion" name="fechaProduccion" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
