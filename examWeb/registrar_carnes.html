@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Carne</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">REGISTRAR CARNES</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="listado.php">CARNES REGISTRADAS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="registrar_tipo_carnes.html">REGISTRAR TIPOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="listar_tipos.php">TIPOS REGISTRADOS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="inventario.php">INVENTARIO GENERAL</a>
+        </li>
+    </ul>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Registrar Carne</h2>
+            </div>
+            <div class="card-body">
+                <form action="registrar_carnes.php" method="post">
+                    <div class="mb-3">
+                        <label for="nombreCarne" class="form-label">Nombre de Carne:</label>
+                        <input type="text" class="form-control" id="nombreCarne" name="nombreCarne" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Cantidad:</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="costo" class="form-label">Costo:</label>
+                        <input type="number" step="0.01" class="form-control" id="costo" name="costo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idTipo" class="form-label">Tipo de Carne:</label>
+                        <select id="idTipo" name="idTipo" class="form-select" required>
+                            <option value="" disabled selected>Selecciona un tipo de carne</option>
+                            <option value="1">Res</option>
+                            <option value="2">Cerdo</option>
+                            <option value="3">Pollo</option>
+                            <option value="4">de Res</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaProduccion" class="form-label">Fecha de Producción:</label>
+                        <input type="date" class="form-control" id="fechaProduccion" name="fechaProduccion" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
