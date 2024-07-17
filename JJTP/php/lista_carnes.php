@@ -1,7 +1,7 @@
 <?php
 include 'connect.php';
 
-$sql = "SELECT * FROM Proveedores";
+$sql = "SELECT c.CarneID, c.Nombre, c.Tipo, c.Precio, p.Nombre as Proveedor FROM Carnes c LEFT JOIN Proveedores p ON c.ProveedorID = p.ProveedorID";
 $result = $conn->query($sql);
 ?>
 
@@ -10,14 +10,14 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Proveedores</title>
+    <title>Lista de Carnes</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="../index.html">Gestión de Carnes</a>
+        <a class="navbar-brand" href="../index.html">Gestión de Carnes</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -27,7 +27,7 @@ $result = $conn->query($sql);
                         <a class="nav-link" href="php/lista_carnes.php">Ver Carnes</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="php/lista_proveedores.php">Ver Proveedores</a>
+                        <a class="nav-link" href="lista_proveedores.php">Ver Proveedores</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="registroCarnes.html">Registrar Carne</a>
@@ -40,14 +40,15 @@ $result = $conn->query($sql);
         </div>
     </nav>
     <div class="container mt-5">
-        <h1>Lista de Proveedores</h1>
+        <h1>Lista de Carnes</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Teléfono</th>
-                    <th>Dirección</th>
+                    <th>Tipo</th>
+                    <th>Precio</th>
+                    <th>Proveedor</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,19 +56,20 @@ $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()) {
                         echo "<tr>";
-                        echo "<td>" . $row["ProveedorID"] . "</td>";
+                        echo "<td>" . $row["CarneID"] . "</td>";
                         echo "<td>" . $row["Nombre"] . "</td>";
-                        echo "<td>" . $row["Telefono"] . "</td>";
-                        echo "<td>" . $row["Direccion"] . "</td>";
+                        echo "<td>" . $row["Tipo"] . "</td>";
+                        echo "<td>" . $row["Precio"] . "</td>";
+                        echo "<td>" . $row["Proveedor"] . "</td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='4'>No hay proveedores registrados</td></tr>";
+                    echo "<tr><td colspan='5'>No hay carnes registradas</td></tr>";
                 }
                 ?>
             </tbody>
         </table>
-        <a href="../proveedores_reg.html" class="btn btn-secondary">Registrar Proveedor</a>
+        <a href="../registroCarnes.html" class="btn btn-secondary">Registrar Carne</a>
     </div>
     <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
