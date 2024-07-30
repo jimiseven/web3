@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-06-2024 a las 19:47:27
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.1.17
+-- Tiempo de generación: 30-07-2024 a las 01:11:18
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `campeonato`
+-- Base de datos: `campeonaro`
 --
 
 -- --------------------------------------------------------
@@ -29,9 +29,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `equipo` (
   `codEquipo` int(11) NOT NULL,
-  `nombreEquipo` varchar(50) NOT NULL,
+  `nombreEquipo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `fechaCreacion` date NOT NULL,
-  `color` varchar(40) NOT NULL
+  `color` varchar(40) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -41,7 +41,9 @@ CREATE TABLE `equipo` (
 INSERT INTO `equipo` (`codEquipo`, `nombreEquipo`, `fechaCreacion`, `color`) VALUES
 (1, 'Aurora', '2000-11-22', 'celeste'),
 (2, 'Palmaflor', '1998-12-12', 'verde'),
-(3, 'Bolivar', '1980-08-14', 'celeste');
+(3, 'Bolivar', '1980-08-14', 'celeste'),
+(4, 'Madrid', '2024-06-12', 'verde'),
+(5, 'enme', '2024-06-07', 'verdee');
 
 -- --------------------------------------------------------
 
@@ -52,11 +54,11 @@ INSERT INTO `equipo` (`codEquipo`, `nombreEquipo`, `fechaCreacion`, `color`) VAL
 CREATE TABLE `jugador` (
   `cod_j` int(11) NOT NULL,
   `ci` int(10) NOT NULL,
-  `nombre` varchar(30) NOT NULL,
-  `paterno` varchar(30) NOT NULL,
-  `materno` varchar(30) NOT NULL,
+  `nombre` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `paterno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `materno` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `fechaNac` date NOT NULL,
-  `sexo` varchar(10) NOT NULL,
+  `sexo` varchar(10) COLLATE utf8_spanish_ci NOT NULL,
   `codEquipo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -85,7 +87,7 @@ ALTER TABLE `jugador`
 -- AUTO_INCREMENT de la tabla `equipo`
 --
 ALTER TABLE `equipo`
-  MODIFY `codEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `codEquipo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `jugador`
