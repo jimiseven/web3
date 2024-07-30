@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Tipo de Carne</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CarnesDelicias</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="registrar_carnes.html">REGISTRAR CARNES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listado_carnes.php">CARNES REGISTRADAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrar_tipo_carnes.html">REGISTRAR TIPOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_tipos.php">TIPOS REGISTRADOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_ingresos_agrupados.php">INVENTARIO GENERAL</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Registrar Tipo de Carne</h2>
+            </div>
+            <div class="card-body">
+                <form id="registrarTipoCarneForm">
+                    <div class="mb-3">
+                        <label for="tipoCarne" class="form-label">Tipo de Carne:</label>
+                        <input type="text" class="form-control" id="tipoCarne" name="tipoCarne" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registroModalLabel">Registro de Tipo de Carne</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Tipo de Carne:</strong> <span id="modalTipoCarne"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="confirmarRegistro">Confirmar Registro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('registrarTipoCarneForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var tipoCarne = document.getElementById('tipoCarne').value;
+
+            document.getElementById('modalTipoCarne').textContent = tipoCarne;
+
+            var registroModal = new bootstrap.Modal(document.getElementById('registroModal'));
+            registroModal.show();
+        });
+
+        document.getElementById('confirmarRegistro').addEventListener('click', function () {
+            var form = document.getElementById('registrarTipoCarneForm');
+            var formData = new FormData(form);
+
+            fetch('registrar_tipo_carnes.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                var registroModal = bootstrap.Modal.getInstance(document.getElementById('registroModal'));
+                registroModal.hide();
+                alert('Tipo de carne registrado exitosamente');
+                form.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+
+</html>

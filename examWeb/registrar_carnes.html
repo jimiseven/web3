@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Carne</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">CarnesDelicias</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="registrar_carnes.html">REGISTRAR CARNES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listado_carnes.php">CARNES REGISTRADAS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registrar_tipo_carnes.html">REGISTRAR TIPOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_tipos.php">TIPOS REGISTRADOS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="listar_ingresos_agrupados.php">INVENTARIO GENERAL</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h2>Registrar Carne</h2>
+            </div>
+            <div class="card-body">
+                <form id="registrarCarneForm">
+                    <div class="mb-3">
+                        <label for="nombreCarne" class="form-label">Nombre de Carne:</label>
+                        <input type="text" class="form-control" id="nombreCarne" name="nombreCarne" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantidad" class="form-label">Cantidad en Kg:</label>
+                        <input type="number" class="form-control" id="cantidad" name="cantidad" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="costo" class="form-label">Costo:</label>
+                        <input type="number" step="0.01" class="form-control" id="costo" name="costo" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="idTipo" class="form-label">Tipo de Corte:</label>
+                        <select id="idTipo" name="idTipo" class="form-select" required>
+                            <option value="" disabled selected>Selecciona un tipo de carne</option>
+                            <option value="1">Carrillada</option>
+                            <option value="2">Corte de pescuezo</option>
+                            <option value="3">Pecho</option>
+                            <option value="4">Paleta</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaProduccion" class="form-label">Fecha de Producción:</label>
+                        <input type="date" class="form-control" id="fechaProduccion" name="fechaProduccion" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="registroModal" tabindex="-1" aria-labelledby="registroModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="registroModalLabel">Registro de Carne</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Nombre de Carne:</strong> <span id="modalNombreCarne"></span></p>
+                    <p><strong>Cantidad en Kg:</strong> <span id="modalCantidad"></span></p>
+                    <p><strong>Costo:</strong> <span id="modalCosto"></span></p>
+                    <p><strong>Tipo de Corte:</strong> <span id="modalTipo"></span></p>
+                    <p><strong>Fecha de Producción:</strong> <span id="modalFechaProduccion"></span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="confirmarRegistro">Confirmar Registro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('registrarCarneForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var nombreCarne = document.getElementById('nombreCarne').value;
+            var cantidad = document.getElementById('cantidad').value;
+            var costo = document.getElementById('costo').value;
+            var idTipo = document.getElementById('idTipo').options[document.getElementById('idTipo').selectedIndex].text;
+            var fechaProduccion = document.getElementById('fechaProduccion').value;
+
+            document.getElementById('modalNombreCarne').textContent = nombreCarne;
+            document.getElementById('modalCantidad').textContent = cantidad;
+            document.getElementById('modalCosto').textContent = costo;
+            document.getElementById('modalTipo').textContent = idTipo;
+            document.getElementById('modalFechaProduccion').textContent = fechaProduccion;
+
+            var registroModal = new bootstrap.Modal(document.getElementById('registroModal'));
+            registroModal.show();
+        });
+
+        document.getElementById('confirmarRegistro').addEventListener('click', function () {
+            var form = document.getElementById('registrarCarneForm');
+            var formData = new FormData(form);
+
+            fetch('registrar_carnes.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                var registroModal = new bootstrap.Modal(document.getElementById('registroModal'));
+                registroModal.hide();
+                alert('Registro guardado exitosamente');
+                form.reset();
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+
+</html>
