@@ -1,5 +1,5 @@
 <?php
-    $conexion=mysqli_connect('localhost','root','','webCampeonato');
+    $conexion=mysqli_connect('localhost','root','','campeonaro');
     $nom=$_GET['nomEq'];
     $fec=$_GET['fecha'];
     $col=$_GET['color'];

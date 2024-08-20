@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-        $conexion=mysqli_connect('localhost','root','','webCampeonato');
+        $conexion=mysqli_connect('localhost','root','','campeonaro');
         $consulta="select * from equipo";
         $ejeConsulta=mysqli_query($conexion,$consulta) or die("...Error al seleccionar Equipo...");
         $nroEquipos=mysqli_num_rows($ejeConsulta);
@@ -30,14 +30,11 @@
                         <td><?php echo $equipo['fechaCreacion']?></td>
                         <td><?php echo $equipo['color']?></td>
                         <td><a href="editarEquipo.php?codEquipo=<?php echo $equipo['codEquipo']?>">Editar</a></td>
-                        <td><a href="eliminarEquipo.php?codEquipo=<?php echo $equipo['codEquipo']?>">eliminar</a></td>
                     </tr>
                 <?php
                 }
             }
         ?>
     </table>
-    <button><a href="insertarEquipo.php">Insertar Equipo</a></button>
-    <button><a href="../index.html">Atras</a></button> 
 </body>
 </html>

@@ -8,7 +8,7 @@
 <body>
     
     <?php
-        $conexion=mysqli_connect('localhost','root','','webCampeonato');
+        $conexion=mysqli_connect('localhost','root','','campeonaro');
         $cod=$_REQUEST['codEquipo'];
         $select = "select codEquipo, nombreEquipo, fechaCreacion, color from equipo where codEquipo = $cod";
         $select_ej=mysqli_query($conexion, $select) or die("...Error en la tabla");
@@ -29,7 +29,7 @@
         <input type="text" name="color" value="<?php echo $valores['color']?>">
 
         <input type="submit" value="Guardar Cambios">
-        <input type="cancel" value="Cancelar">
+        <input type="submit" value="Cancelar">
 
     </form>
 
