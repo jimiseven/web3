@@ -15,7 +15,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "webCampeonato";  // Nombre de la base de datos
+    $dbname = "webcampeonato";  // Nombre de la base de datos
 
     // Crear la conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
