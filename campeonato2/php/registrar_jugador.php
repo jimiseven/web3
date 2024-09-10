@@ -31,68 +31,178 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Jugador</title>
+    <!-- Enlace a Bootstrap local -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
+
 <body>
-    <h2>Registrar Jugador</h2>
+    <!-- Nav var -->
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+                <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                    <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                        <span class="fs-5 d-none d-sm-inline">Campeonato</span>
+                    </a>
+                    <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                        <li class="nav-item">
+                            <a href="../inde1.php" class="nav-link align-middle px-0">
+                                <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline fw-bold">Jugadores</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="registrar_jugador.php" class="nav-link px-0"> <span class="d-none d-sm-inline">- Registro</span></a>
+                                </li>
+                                <li>
+                                    <a href="listar_jugadores.php" class="nav-link px-0"> <span class="d-none d-sm-inline">- Listado</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Equipos -->
+                        <li>
+                            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline fw-bold">Equipos</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="php/registrar_equipo.php" class="nav-link px-0"> <span class="d-none d-sm-inline">- Registro</span></a>
+                                </li>
+                                <li>
+                                    <a href="php/listar_equipos.php" class="nav-link px-0"> <span class="d-none d-sm-inline">- Listado</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Posiciones -->
+                        <li>
+                            <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i>
+                                <span class="ms-1 d-none d-sm-inline fw-bold">Posiciones</span>
+                            </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu"> <!-- Clase 'show' removida -->
+                                <li class="w-100">
+                                    <a href="php/registrar_posicion.php" class="nav-link px-0">
+                                        <span class="d-none d-sm-inline">- Registro</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="php/listar_posiciones.php" class="nav-link px-0">
+                                        <span class="d-none d-sm-inline">- Listado</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Posiciones Fin-->
+                    </ul>
+                    <hr>
+                    <div class="dropdown pb-4">
+                        <span class="d-none d-sm-inline mx-1">Admin</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Contenido central -->
+            <div class="col py-3">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <h2 class="text-center mb-4">Registrar Jugador</h2>
 
-    <!-- Mostrar mensaje de éxito o error -->
-    <?php if (!empty($mensaje)): ?>
-        <p><?php echo $mensaje; ?></p>
-    <?php endif; ?>
+                            <!-- Mostrar mensaje de éxito o error -->
+                            <?php if (!empty($mensaje)): ?>
+                                <div class="alert alert-info"><?php echo $mensaje; ?></div>
+                            <?php endif; ?>
 
-    <form action="registrar_jugador.php" method="post">
-        <label for="cod_j">Código del Jugador:</label>
-        <input type="text" name="cod_j" required><br>
 
-        <label for="ci">Carnet de Identidad:</label>
-        <input type="text" name="ci" required><br>
+                            <form action="registrar_jugador.php" method="post">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="cod_j" class="form-label">Código del Jugador:</label>
+                                            <input type="text" class="form-control" name="cod_j" required>
+                                        </div>
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" required><br>
+                                        <div class="mb-3">
+                                            <label for="ci" class="form-label">Carnet de Identidad:</label>
+                                            <input type="text" class="form-control" name="ci" required>
+                                        </div>
 
-        <label for="paterno">Apellido Paterno:</label>
-        <input type="text" name="paterno" required><br>
+                                        <div class="mb-3">
+                                            <label for="nombre" class="form-label">Nombre:</label>
+                                            <input type="text" class="form-control" name="nombre" required>
+                                        </div>
 
-        <label for="materno">Apellido Materno:</label>
-        <input type="text" name="materno" required><br>
+                                        <div class="mb-3">
+                                            <label for="paterno" class="form-label">Apellido Paterno:</label>
+                                            <input type="text" class="form-control" name="paterno" required>
+                                        </div>
+                                    </div>
 
-        <label for="fechaNac">Fecha de Nacimiento:</label>
-        <input type="date" name="fechaNac" required><br>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label for="materno" class="form-label">Apellido Materno:</label>
+                                            <input type="text" class="form-control" name="materno" required>
+                                        </div>
 
-        <label for="sexo">Sexo:</label>
-        <select name="sexo" required>
-            <option value="M">Masculino</option>
-            <option value="F">Femenino</option>
-        </select><br>
+                                        <div class="mb-3">
+                                            <label for="fechaNac" class="form-label">Fecha de Nacimiento:</label>
+                                            <input type="date" class="form-control" name="fechaNac" required>
+                                        </div>
 
-        <label for="codEquipo">Equipo:</label>
-        <select name="codEquipo" required>
-            <?php
-            // Volver a abrir la conexión a la base de datos para obtener los equipos
-            include 'conexion.php';
+                                        <div class="mb-3">
+                                            <label for="sexo" class="form-label">Sexo:</label>
+                                            <select class="form-select" name="sexo" required>
+                                                <option value="M">Masculino</option>
+                                                <option value="F">Femenino</option>
+                                            </select>
+                                        </div>
 
-            // Consulta para obtener los equipos
-            $result = $conn->query("SELECT codEquipo, nombreEquipo FROM equipo");
-            
-            // Llenar el select con los equipos
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<option value='{$row['codEquipo']}'>{$row['nombreEquipo']}</option>";
-                }
-            } else {
-                echo "<option value=''>No hay equipos disponibles</option>";
-            }
+                                        <div class="mb-3">
+                                            <label for="codEquipo" class="form-label">Equipo:</label>
+                                            <select class="form-select" name="codEquipo" required>
+                                                <?php
+                                                // Volver a abrir la conexión a la base de datos para obtener los equipos
+                                                include 'conexion.php';
 
-            // Cerrar la conexión
-            $conn->close();
-            ?>
-        </select><br><br>
+                                                // Consulta para obtener los equipos
+                                                $result = $conn->query("SELECT codEquipo, nombreEquipo FROM equipo");
 
-        <input type="submit" value="Registrar Jugador">
-    </form>
+                                                // Llenar el select con los equipos
+                                                if ($result->num_rows > 0) {
+                                                    while ($row = $result->fetch_assoc()) {
+                                                        echo "<option value='{$row['codEquipo']}'>{$row['nombreEquipo']}</option>";
+                                                    }
+                                                } else {
+                                                    echo "<option value=''>No hay equipos disponibles</option>";
+                                                }
+
+                                                // Cerrar la conexión
+                                                $conn->close();
+                                                ?>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary w-100">Registrar Jugador</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Nav var fin -->
+
+
+    <!-- Bootstrap JS -->
+    <script src="../js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
