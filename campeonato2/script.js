@@ -1,3 +1,3 @@
-function redireccionar(pagina) {
-    window.location.href = pagina;
+function redireccionar(url) {
+    window.location.href = url;
 }

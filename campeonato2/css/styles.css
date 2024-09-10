@@ -21,3 +21,28 @@ button {
 button:hover {
     background-color: #3e8e41; /* Color de fondo más oscuro al pasar el ratón */
 }
+
+/* estilos index */
+/* Tabla */
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
