@@ -88,6 +88,26 @@ $conn->close();
                             </ul>
                         </li>
                         <!-- Posiciones Fin-->
+                        <!-- Posicion Jugador -->
+                        <li>
+                            <a href="#submenu7" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i>
+                                <span class="ms-1 d-none d-sm-inline fw-bold">Pos Jugadores</span>
+                            </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu7" data-bs-parent="#menu"> <!-- Clase 'show' removida -->
+                                <li class="w-100">
+                                    <a href="php/registrar_relacion.php" class="nav-link px-0">
+                                        <span class="d-none d-sm-inline">- Registro</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="php/listar_relaciones.php" class="nav-link px-0">
+                                        <span class="d-none d-sm-inline">- Listado</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Posicion Jugador Fin-->
                     </ul>
                     <hr>
                     <div class="dropdown pb-4">
