@@ -1,101 +1,125 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administración de Proyectos</title>  
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administración de Proyectos</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/styles.css" />
-    
-</head>
-<body>
+  </head>
+  <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <h4 class="text-light text-center">AdmiPro</h4>
-        <a href="listar_empleados.php">Empleados</a>
-        <a href="listar_proyectos.php">Proyectos</a>
-        <a href="listar_tareas.php">Tareas</a>
+      <a href="index.html" class="text-light text-center">AdmiPro</a>
+      <a href="listar_empleados.php">Empleados</a>
+      <a href="listar_proyectos.php">Proyectos</a>
+      <a href="listar_tareas.php">Tareas</a>
     </div>
 
     <!-- Contenido central -->
     <div class="content p-4">
-        <!-- Sección Empleados -->
-        <h1 id="empleados" class="mb-4">Empleados</h1>
-        <div class="row">
-            <!-- Tarjeta 1: Información sobre los empleados -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Total de Empleados</h5>
-                        <p class="card-text">Gestiona a todos los empleados de la organización, asigna tareas y proyectos.</p>
-                        <a href="listar_empleados.php" class="btn btn-primary">Ver Empleados</a>
-                    </div>
-                </div>
+      <!-- Sección Empleados -->
+      <h1 id="empleados" class="mb-4">Empleados</h1>
+      <div class="row">
+        <!-- Tarjeta 1: Información sobre los empleados -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Total de Empleados</h5>
+              <p class="card-text">
+                Gestiona a todos los empleados de la organización, asigna tareas
+                y proyectos.
+              </p>
+              <a href="listar_empleados.php" class="btn btn-primary"
+                >Ver Empleados</a
+              >
             </div>
-            <!-- Tarjeta 2: Registro de empleados -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Agregar Nuevo Empleado</h5>
-                        <p class="card-text">Registra a nuevos empleados en el sistema para asignarles tareas y proyectos.</p>
-                        <a href="registro_empleados.php" class="btn btn-success">Registrar Empleado</a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <!-- Tarjeta 2: Registro de empleados -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Agregar Nuevo Empleado</h5>
+              <p class="card-text">
+                Registra a nuevos empleados en el sistema para asignarles tareas
+                y proyectos.
+              </p>
+              <a href="registro_empleados.php" class="btn btn-success"
+                >Registrar Empleado</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <!-- Sección Tareas -->
-        <h1 id="tareas" class="mt-5 mb-4">Tareas</h1>
-        <div class="row">
-            <!-- Tarjeta 1: Listar tareas -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Listado de Tareas</h5>
-                        <p class="card-text">Consulta las tareas asignadas a los empleados y su progreso.</p>
-                        <a href="listar_tareas.php" class="btn btn-primary">Ver Tareas</a>
-                    </div>
-                </div>
+      <!-- Sección Tareas -->
+      <h1 id="tareas" class="mt-5 mb-4">Tareas</h1>
+      <div class="row">
+        <!-- Tarjeta 1: Listar tareas -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Listado de Tareas</h5>
+              <p class="card-text">
+                Consulta las tareas asignadas a los empleados y su progreso.
+              </p>
+              <a href="listar_tareas.php" class="btn btn-primary">Ver Tareas</a>
             </div>
-            <!-- Tarjeta 2: Nueva tarea -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Crear Nueva Tarea</h5>
-                        <p class="card-text">Asigna nuevas tareas a los empleados para proyectos en curso.</p>
-                        <a href="registro_tareas.php" class="btn btn-success">Crear Tarea</a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <!-- Tarjeta 2: Nueva tarea -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Crear Nueva Tarea</h5>
+              <p class="card-text">
+                Asigna nuevas tareas a los empleados para proyectos en curso.
+              </p>
+              <a href="registro_tareas.php" class="btn btn-success"
+                >Crear Tarea</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <!-- Sección Proyectos -->
-        <h1 id="proyectos" class="mt-5 mb-4">Proyectos</h1>
-        <div class="row">
-            <!-- Tarjeta 1: Listar proyectos -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Listado de Proyectos</h5>
-                        <p class="card-text">Consulta todos los proyectos activos y su estado.</p>
-                        <a href="listar_proyectos.php" class="btn btn-primary">Ver Proyectos</a>
-                    </div>
-                </div>
+      <!-- Sección Proyectos -->
+      <h1 id="proyectos" class="mt-5 mb-4">Proyectos</h1>
+      <div class="row">
+        <!-- Tarjeta 1: Listar proyectos -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Listado de Proyectos</h5>
+              <p class="card-text">
+                Consulta todos los proyectos activos y su estado.
+              </p>
+              <a href="listar_proyectos.php" class="btn btn-primary"
+                >Ver Proyectos</a
+              >
             </div>
-            <!-- Tarjeta 2: Nuevo proyecto -->
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Crear Nuevo Proyecto</h5>
-                        <p class="card-text">Inicia un nuevo proyecto y asigna tareas a los empleados responsables.</p>
-                        <a href="registro_proyectos.php" class="btn btn-success">Crear Proyecto</a>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+        <!-- Tarjeta 2: Nuevo proyecto -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Crear Nuevo Proyecto</h5>
+              <p class="card-text">
+                Inicia un nuevo proyecto y asigna tareas a los empleados
+                responsables.
+              </p>
+              <a href="registro_proyectos.php" class="btn btn-success"
+                >Crear Proyecto</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Bootstrap JS Local -->
     <script src="js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>

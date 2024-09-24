@@ -29,7 +29,7 @@ try {
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <h4 class="text-light text-center">AdmiPro</h4>
+        <a href="index.html" class="text-light text-center">AdmiPro</a>
         <a href="listar_empleados.php">Empleados</a>
         <a href="listar_proyectos.php">Proyectos</a>
         <a href="listar_tareas.php">Tareas</a>
