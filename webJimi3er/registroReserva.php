@@ -59,7 +59,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <!-- centro ini-->
         <div class="container mt-5">
-            <h2 class="text-center">Registro de Reservas</h2>
+            <h2 class="text-center">
+                <div class="row">
+                    <div class="col-md-6">
+                    <h2>Registrar Reservas</h2>
+                    </div>
+                    <div class="col-md-6">
+                    <a href="listar_reservas.php" class="btn btn-primary btn-lg"> Listado</a>
+                    </div>
+                </div>
+            </h2>
 
             <!-- Mostrar mensaje si el formulario fue procesado -->
             <?php if (isset($mensaje)): ?>
@@ -68,72 +77,84 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             <?php endif; ?>
 
+            <!-- Formulario en dos columnas -->
             <form action="" method="POST">
-                <!-- Select para seleccionar Cliente -->
-                <div class="mb-3">
-                    <label for="cliente_id" class="form-label">Seleccionar Cliente</label>
-                    <select class="form-control" id="cliente_id" name="cliente_id" required>
-                        <option value="">Seleccione un cliente</option>
-                        <?php while ($cliente = $clientes->fetch_assoc()): ?>
-                            <option value="<?php echo $cliente['id']; ?>"><?php echo $cliente['nombre']; ?></option>
-                        <?php endwhile; ?>
-                    </select>
-                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Select para seleccionar Cliente -->
+                        <div class="mb-3">
+                            <label for="cliente_id" class="form-label">Seleccionar Cliente</label>
+                            <select class="form-control" id="cliente_id" name="cliente_id" required>
+                                <option value="">Seleccione un cliente</option>
+                                <?php while ($cliente = $clientes->fetch_assoc()): ?>
+                                    <option value="<?php echo $cliente['id']; ?>"><?php echo $cliente['nombre']; ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
 
-                <!-- Select para seleccionar Mesa -->
-                <div class="mb-3">
-                    <label for="mesa_id" class="form-label">Seleccionar Mesa</label>
-                    <select class="form-control" id="mesa_id" name="mesa_id" required>
-                        <option value="">Seleccione una mesa</option>
-                        <?php while ($mesa = $mesas->fetch_assoc()): ?>
-                            <option value="<?php echo $mesa['id']; ?>">Mesa <?php echo $mesa['numero_mesa']; ?></option>
-                        <?php endwhile; ?>
-                    </select>
-                </div>
+                        <!-- Select para seleccionar Mesa -->
+                        <div class="mb-3">
+                            <label for="mesa_id" class="form-label">Seleccionar Mesa</label>
+                            <select class="form-control" id="mesa_id" name="mesa_id" required>
+                                <option value="">Seleccione una mesa</option>
+                                <?php while ($mesa = $mesas->fetch_assoc()): ?>
+                                    <option value="<?php echo $mesa['id']; ?>">Mesa <?php echo $mesa['numero_mesa']; ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
 
-                <!-- Select para seleccionar Menú -->
-                <div class="mb-3">
-                    <label for="menu_id" class="form-label">Seleccionar Menú</label>
-                    <select class="form-control" id="menu_id" name="menu_id" required>
-                        <option value="">Seleccione un menú</option>
-                        <?php while ($menu = $menus->fetch_assoc()): ?>
-                            <option value="<?php echo $menu['id']; ?>"><?php echo $menu['nombre']; ?></option>
-                        <?php endwhile; ?>
-                    </select>
-                </div>
-
-                <!-- Campo para la hora de la reserva -->
-                <div class="mb-3">
-                    <label for="hora_reserva" class="form-label">Hora de la Reserva</label>
-                    <input type="datetime-local" class="form-control" id="hora_reserva" name="hora_reserva" required>
-                </div>
-
-                <!-- Checkbox para solicitudes especiales -->
-                <div class="mb-3">
-                    <label class="form-label">Solicitudes Especiales</label><br>
-                    <textarea class="form-control" name="solicitudes_especiales" id="solicitudes_especiales"></textarea>
-                </div>
-
-                <!-- Radio buttons para confirmar la reserva -->
-                <div class="mb-3">
-                    <label class="form-label">¿Confirmar reserva?</label><br>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="confirmado" id="confirmado_si" value="1" required>
-                        <label class="form-check-label" for="confirmado_si">Sí</label>
+                        <!-- Select para seleccionar Menú -->
+                        <div class="mb-3">
+                            <label for="menu_id" class="form-label">Seleccionar Menú</label>
+                            <select class="form-control" id="menu_id" name="menu_id" required>
+                                <option value="">Seleccione un menú</option>
+                                <?php while ($menu = $menus->fetch_assoc()): ?>
+                                    <option value="<?php echo $menu['id']; ?>"><?php echo $menu['nombre']; ?></option>
+                                <?php endwhile; ?>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="confirmado" id="confirmado_no" value="0" required>
-                        <label class="form-check-label" for="confirmado_no">No</label>
+
+                    <div class="col-md-6">
+                        <!-- Campo para la hora de la reserva -->
+                        <div class="mb-3">
+                            <label for="hora_reserva" class="form-label">Hora de la Reserva</label>
+                            <input type="datetime-local" class="form-control" id="hora_reserva" name="hora_reserva" required>
+                        </div>
+
+                        <!-- Checkbox para solicitudes especiales -->
+                        <div class="mb-3">
+                            <label class="form-label">Solicitudes Especiales</label><br>
+                            <textarea class="form-control" name="solicitudes_especiales" id="solicitudes_especiales"></textarea>
+                        </div>
+
+                        <!-- Radio buttons para confirmar la reserva -->
+                        <div class="mb-3">
+                            <label class="form-label">¿Confirmar reserva?</label><br>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="confirmado" id="confirmado_si" value="1" required>
+                                <label class="form-check-label" for="confirmado_si">Sí</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="confirmado" id="confirmado_no" value="0" required>
+                                <label class="form-check-label" for="confirmado_no">No</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Botón de envío -->
-                <button type="submit" class="btn btn-primary">Registrar Reserva</button>
+                <!-- Botón de envío en el centro -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Registrar Reserva</button>
+                </div>
             </form>
         </div>
+
+
         <!-- centro end -->
     </div>
     <script src="js/bootstrap.bundle.min.js"></script>
+    
 </body>
 
 </html>
