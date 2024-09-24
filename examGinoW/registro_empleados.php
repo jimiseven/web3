@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre = $_POST['nombre'];
     $puesto = $_POST['puesto'];
     $email = $_POST['email'];
-    
+
     // Verificar si se subió una foto
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         // Obtener la imagen como blob
@@ -49,17 +49,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Empleado</title>
     <!-- Bootstrap local -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Registro de Empleado</h2>
-        
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-light text-center">AdmiPro</h4>
+        <a href="listar_empleados.php">Empleados</a>
+        <a href="listar_proyectos.php">Proyectos</a>
+        <a href="listar_tareas.php">Tareas</a>
+    </div>
+
+    <!-- Contenido central -->
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Registro de Empleados</h2>
+            <a href="listar_empleados.php" class="btn btn-primary">Listado</a>
+        </div>
+
         <?php if (!empty($mensaje)): ?>
             <div class="alert alert-info"><?php echo $mensaje; ?></div>
         <?php endif; ?>
@@ -88,8 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="btn btn-primary">Registrar Empleado</button>
         </form>
     </div>
-
     <!-- Bootstrap JS local -->
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

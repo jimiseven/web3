@@ -18,16 +18,33 @@ try {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Tareas</title>
     <!-- Bootstrap local -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Listado de Tareas</h2>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-light text-center">AdmiPro</h4>
+        <a href="listar_empleados.php">Empleados</a>
+        <a href="listar_proyectos.php">Proyectos</a>
+        <a href="listar_tareas.php">Tareas</a>
+    </div>
+    <!-- Sidebar fin-->
+
+    <!-- Contenido central -->
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Listado de Tareas</h2>
+            <a href="registro_empleados.php" class="btn btn-primary">Añadir Tarea</a>
+        </div>
+
         <table class="table table-bordered table-hover">
             <thead class="table-dark">
                 <tr>
@@ -71,8 +88,9 @@ try {
             </tbody>
         </table>
     </div>
-
+    <!-- Contenido central fin -->
     <!-- Bootstrap JS local -->
     <script src="js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

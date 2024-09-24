@@ -54,17 +54,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrar Proyecto</title>
     <!-- Bootstrap local -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Registro de Proyecto</h2>
-        
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h4 class="text-light text-center">AdmiPro</h4>
+        <a href="listar_empleados.php">Empleados</a>
+        <a href="listar_proyectos.php">Proyectos</a>
+        <a href="listar_tareas.php">Tareas</a>
+    </div>
+    <!-- Sidebar fin-->
+
+    <!-- Contenido central -->
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Registro de Proyectos</h2>
+            <a href="listar_proyectos.php" class="btn btn-primary">Listado de Proyectos</a>
+        </div>
+
+
         <?php if (!empty($mensaje)): ?>
             <div class="alert alert-info"><?php echo $mensaje; ?></div>
         <?php endif; ?>
@@ -107,8 +124,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <button type="submit" class="btn btn-primary">Registrar Proyecto</button>
         </form>
     </div>
-
+    <!-- Contenido central fin -->
     <!-- Bootstrap JS local -->
     <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
