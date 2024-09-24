@@ -78,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           <a href="registroCliente.php" class="list-group-item list-group-item-action">Registro Cliente</a>
           <a href="registroMesas.php" class="list-group-item list-group-item-action"> Registro Mesas</a>
           <a href="registrarPlatos.php" class="list-group-item list-group-item-action"> Registro Platos</a>
+          <a href="registroReserva.php" class="list-group-item list-group-item-action"> Registro Reservas</a>
         </div>
       </div>
       <!-- Sidebar end -->
