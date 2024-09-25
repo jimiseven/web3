@@ -42,7 +42,7 @@ try {
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Listado de Tareas</h2>
-            <a href="registro_empleados.php" class="btn btn-primary">Añadir Tarea</a>
+            <a href="registro_tareas.php" class="btn btn-primary">Añadir Tarea</a>
         </div>
 
         <table class="table table-bordered table-hover">

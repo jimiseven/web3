@@ -30,9 +30,9 @@ try {
     <!-- Sidebar -->
     <div class="sidebar">
         <a href="index.html" class="text-light text-center">AdmiPro</a>
-        <a href="registro_empleados.php">Empleados</a>
-        <a href="registro_proyectos.php">Proyectos</a>
-        <a href="registro_tareas.php">Tareas</a>
+        <a href="listar_empleados.php">Empleados</a>
+        <a href="listar_proyectos.php">Proyectos</a>
+        <a href="listar_tareas.php">Tareas</a>
     </div>
     <!-- Sidebar fin-->
 
