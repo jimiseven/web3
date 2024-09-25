@@ -19,9 +19,22 @@ $resultado = $conexion->query($sql); // Ejecutar la consulta
 </head>
 
 <body>
-    <div class="container">
-        <h2 class="mt-5">Lista de Equipos</h2>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <a href="index.html" class="text-light text-center">AdmiPro</a>
+        <a href="listar_empleados.php">Empleados</a>
+        <a href="listar_proyectos.php">Proyectos</a>
+        <a href="listar_tareas.php">Tareas</a>
+        <a href="listar_equipos.php">Equipos</a>
+    </div>
+    <!-- Sidebar fin-->
 
+    <!-- Contenido central -->
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Listado de Equipos</h2>
+            <a href="registrar_equipo.php" class="btn btn-primary">Añadir Tarea</a>
+        </div>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -50,6 +63,7 @@ $resultado = $conexion->query($sql); // Ejecutar la consulta
             </tbody>
         </table>
     </div>
+    <!-- Contenido central fin-->
     <script src="bootstrap.bundle.min.js"></script> <!-- Asegúrate de tener el archivo Bootstrap local -->
 </body>
 
