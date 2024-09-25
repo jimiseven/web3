@@ -50,6 +50,7 @@ $conexion = null; // Cerrar conexión
         <a href="listar_proyectos.php">Proyectos</a>
         <a href="listar_tareas.php">Tareas</a>
         <a href="listar_equipos.php">Equipos</a>
+        <a href="listar_asignaciones.php">Asignaciones</a>
     </div>
     <!-- Sidebar fin-->
 

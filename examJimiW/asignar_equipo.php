@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="content">
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <h2 class="mb-0">Asignar Equipo a Tarea</h2>
-                <a href="registro_tareas.php" class="btn btn-primary">Añadir Tarea</a>
+                <a href="listar_asignaciones.php" class="btn btn-primary">Listado de Asiganciones</a>
             </div>
             <?php if (isset($mensaje)): ?>
                 <div class="alert alert-info"><?php echo $mensaje; ?></div>

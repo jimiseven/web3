@@ -91,6 +91,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <a href="listar_empleados.php">Empleados</a>
         <a href="listar_proyectos.php">Proyectos</a>
         <a href="listar_tareas.php">Tareas</a>
+        <a href="listar_equipos.php">Equipos</a>
+        <a href="listar_asignaciones.php">Asignaciones</a>
     </div>
     <!-- Sidebar fin-->
 
