@@ -14,7 +14,7 @@
         Fecha de Fundacion : <input type="date" name="fecha"><br>
         Color Equipo : <input type="text" name="color"><br>
         <input type="submit" value="Guardar">
-        <input type="reset" value="Cancelar">
+        <button><a href="../index.html">Cancelar</a></button>        
     </form>
 </body>
 </html>

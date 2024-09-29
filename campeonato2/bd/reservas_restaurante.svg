@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg
+PUBLIC "-//W3C//DTD SVG 1.1//EN"
+       "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg viewBox="133 91 1021 499" width="888px" height="408px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+   <line x1="631" y1="203" x2="641" y2="203" style="stroke:#333;stroke-width:1;"/>
+   <line x1="858" y1="136" x2="868" y2="136" style="stroke:#333;stroke-width:1;"/>
+   <line x1="641" y1="203" x2="858" y2="136" style="stroke:#333;stroke-width:1;"/>
+   <line x1="638.5" y1="203" x2="634.96446609407" y2="206.53553390593" style="stroke:#333;stroke-width:2;"/>
+   <line x1="638.5" y1="203" x2="634.96446609407" y2="199.46446609407" style="stroke:#333;stroke-width:2;"/>
+   <line x1="863" y1="136" x2="859.46446609407" y2="139.53553390593" style="stroke:#333;stroke-width:2;"/>
+   <line x1="863" y1="136" x2="859.46446609407" y2="132.46446609407" style="stroke:#333;stroke-width:2;"/>
+   <line x1="631" y1="223" x2="641" y2="223" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="751" y1="414" x2="761" y2="414" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="641" y1="223" x2="751" y2="414" style="stroke:#0bf;stroke-width:1;"/>
+   <line x1="638.5" y1="223" x2="634.96446609407" y2="226.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="638.5" y1="223" x2="634.96446609407" y2="219.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="756" y1="414" x2="752.46446609407" y2="417.53553390593" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="756" y1="414" x2="752.46446609407" y2="410.46446609407" style="stroke:#0bf;stroke-width:2;"/>
+   <line x1="465" y1="243" x2="455" y2="243" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="249" y1="252" x2="239" y2="252" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="455" y1="243" x2="249" y2="252" style="stroke:#0b0;stroke-width:1;"/>
+   <line x1="457.5" y1="243" x2="461.03553390593" y2="246.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="457.5" y1="243" x2="461.03553390593" y2="239.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="244" y1="252" x2="247.53553390593" y2="255.53553390593" style="stroke:#0b0;stroke-width:2;"/>
+   <line x1="244" y1="252" x2="247.53553390593" y2="248.46446609407" style="stroke:#0b0;stroke-width:2;"/>
+   <rect width="138" height="20" x="868" y="106" style="fill:#007;stroke:black;"/>
+   <text width="138" height="20" x="873" y="120" style="fill:#fff;" font-family="Arial" font-size="16px"> clientes</text>
+   <rect width="138" height="20" x="868" y="126" style="fill:#aea;stroke:black;"/>
+   <text width="138" height="20" x="873" y="140" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="138" height="20" x="868" y="146" style="fill:none;stroke:black;"/>
+   <text width="138" height="20" x="873" y="160" style="fill:black;" font-family="Arial" font-size="16px">nombre</text>
+   <rect width="138" height="20" x="868" y="166" style="fill:none;stroke:black;"/>
+   <text width="138" height="20" x="873" y="180" style="fill:black;" font-family="Arial" font-size="16px">correo_electronico</text>
+   <rect width="138" height="20" x="868" y="186" style="fill:none;stroke:black;"/>
+   <text width="138" height="20" x="873" y="200" style="fill:black;" font-family="Arial" font-size="16px">telefono</text>
+   <rect width="91" height="20" x="148" y="222" style="fill:#007;stroke:black;"/>
+   <text width="91" height="20" x="153" y="236" style="fill:#fff;" font-family="Arial" font-size="16px"> menus</text>
+   <rect width="91" height="20" x="148" y="242" style="fill:#aea;stroke:black;"/>
+   <text width="91" height="20" x="153" y="256" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="91" height="20" x="148" y="262" style="fill:none;stroke:black;"/>
+   <text width="91" height="20" x="153" y="276" style="fill:black;" font-family="Arial" font-size="16px">nombre</text>
+   <rect width="91" height="20" x="148" y="282" style="fill:none;stroke:black;"/>
+   <text width="91" height="20" x="153" y="296" style="fill:black;" font-family="Arial" font-size="16px">descripcion</text>
+   <rect width="91" height="20" x="148" y="302" style="fill:none;stroke:black;"/>
+   <text width="91" height="20" x="153" y="316" style="fill:black;" font-family="Arial" font-size="16px">url_imagen</text>
+   <rect width="108" height="20" x="761" y="384" style="fill:#007;stroke:black;"/>
+   <text width="108" height="20" x="766" y="398" style="fill:#fff;" font-family="Arial" font-size="16px"> mesas</text>
+   <rect width="108" height="20" x="761" y="404" style="fill:#aea;stroke:black;"/>
+   <text width="108" height="20" x="766" y="418" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="108" height="20" x="761" y="424" style="fill:none;stroke:black;"/>
+   <text width="108" height="20" x="766" y="438" style="fill:black;" font-family="Arial" font-size="16px">numero_mesa</text>
+   <rect width="108" height="20" x="761" y="444" style="fill:none;stroke:black;"/>
+   <text width="108" height="20" x="766" y="458" style="fill:black;" font-family="Arial" font-size="16px">capacidad</text>
+   <rect width="108" height="20" x="761" y="464" style="fill:none;stroke:black;"/>
+   <text width="108" height="20" x="766" y="478" style="fill:black;" font-family="Arial" font-size="16px">ubicacion</text>
+   <rect width="166" height="20" x="465" y="153" style="fill:#007;stroke:black;"/>
+   <text width="166" height="20" x="470" y="167" style="fill:#fff;" font-family="Arial" font-size="16px"> reservas</text>
+   <rect width="166" height="20" x="465" y="173" style="fill:#aea;stroke:black;"/>
+   <text width="166" height="20" x="470" y="187" style="fill:black;" font-family="Arial" font-size="16px">id</text>
+   <rect width="166" height="20" x="465" y="193" style="fill:none;stroke:black;"/>
+   <text width="166" height="20" x="470" y="207" style="fill:black;" font-family="Arial" font-size="16px">cliente_id</text>
+   <rect width="166" height="20" x="465" y="213" style="fill:none;stroke:black;"/>
+   <text width="166" height="20" x="470" y="227" style="fill:black;" font-family="Arial" font-size="16px">mesa_id</text>
+   <rect width="166" height="20" x="465" y="233" style="fill:none;stroke:black;"/>
+   <text width="166" height="20" x="470" y="247" style="fill:black;" font-family="Arial" font-size="16px">menu_id</text>
+   <rect width="166" height="20" x="465" y="253" style="fill:none;stroke:black;"/>
+   <text width="166" height="20" x="470" y="267" style="fill:black;" font-family="Arial" font-size="16px">hora_reserva</text>
+   <rect width="166" height="20" x="465" y="273" style="fill:none;stroke:black;"/>
+   <text width="166" height="20" x="470" y="287" style="fill:black;" font-family="Arial" font-size="16px">solicitudes_especiales</text>
+   <rect width="166" height="20" x="465" y="293" style="fill:none;stroke:black;"/>
+   <text width="166" height="20" x="470" y="307" style="fill:black;" font-family="Arial" font-size="16px">confirmado</text>
+</svg>
