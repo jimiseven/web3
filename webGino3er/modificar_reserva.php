@@ -2,44 +2,52 @@
 // Incluir el archivo de conexión
 include 'php/conexion.php';
 
-// Variable para almacenar mensajes de éxito o error
-$mensaje = "";
+// Verificar si se ha pasado un ID de reserva
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
 
-// Obtener los clientes disponibles
-$sqlClientes = "SELECT id, nombre FROM clientes";
-$resultadoClientes = $conn->query($sqlClientes);
+    // Obtener los detalles de la reserva actual
+    $sql = "SELECT * FROM reservas WHERE id = $id";
+    $resultado = $conn->query($sql);
+    $reserva = $resultado->fetch_assoc();
 
-// Obtener las mesas disponibles
-$sqlMesas = "SELECT id, numero_mesa, capacidad, ubicacion FROM mesas";
-$resultadoMesas = $conn->query($sqlMesas);
+    // Obtener los clientes disponibles
+    $sqlClientes = "SELECT id, nombre FROM clientes";
+    $resultadoClientes = $conn->query($sqlClientes);
 
-// Obtener los menús disponibles
-$sqlMenus = "SELECT id, nombre FROM menus";
-$resultadoMenus = $conn->query($sqlMenus);
+    // Obtener las mesas disponibles
+    $sqlMesas = "SELECT id, numero_mesa, capacidad, ubicacion FROM mesas";
+    $resultadoMesas = $conn->query($sqlMesas);
 
-// Verificar si el formulario ha sido enviado
+    // Obtener los menús disponibles
+    $sqlMenus = "SELECT id, nombre FROM menus";
+    $resultadoMenus = $conn->query($sqlMenus);
+}
+
+// Verificar si el formulario de modificación fue enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cliente_id = $_POST['cliente_id'];
     $mesa_id = $_POST['mesa_id'];
     $menu_id = $_POST['menu_id'];
     $hora_reserva = $_POST['hora_reserva'];
     $fecha_reserva = $_POST['fecha_reserva'];
-    $confirmado = isset($_POST['confirmado']) ? 1 : 0; // Checkbox
+    $confirmado = isset($_POST['confirmado']) ? 1 : 0;
 
-    // Validar los datos antes de insertarlos
-    if (!empty($cliente_id) && !empty($mesa_id) && !empty($menu_id) && !empty($hora_reserva) && !empty($fecha_reserva)) {
-        // Preparar la consulta SQL
-        $sql = "INSERT INTO reservas (cliente_id, mesa_id, menu_id, hora_reserva, fecha_reserva, confirmado) 
-                VALUES ('$cliente_id', '$mesa_id', '$menu_id', '$hora_reserva', '$fecha_reserva', '$confirmado')";
+    // Actualizar los datos en la base de datos
+    $sql = "UPDATE reservas 
+            SET cliente_id = '$cliente_id', 
+                mesa_id = '$mesa_id', 
+                menu_id = '$menu_id', 
+                hora_reserva = '$hora_reserva', 
+                fecha_reserva = '$fecha_reserva', 
+                confirmado = '$confirmado' 
+            WHERE id = $id";
 
-        // Ejecutar la consulta
-        if ($conn->query($sql) === TRUE) {
-            $mensaje = "Nueva reserva registrada con éxito";
-        } else {
-            $mensaje = "Error: " . $sql . "<br>" . $conn->error;
-        }
+    if ($conn->query($sql) === TRUE) {
+        // Redirigir al listado de reservas con un mensaje de éxito
+        header("Location: listado_reservas.php?mensaje=Reserva modificada con éxito");
     } else {
-        $mensaje = "Por favor, rellena todos los campos.";
+        echo "Error al modificar la reserva: " . $conn->error;
     }
 }
 ?>
@@ -50,33 +58,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro de Reserva</title>
+    <title>Modificar Reserva</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <div class="container mt-5">
-        <h2 class="mb-4">Registro de Reservas</h2>
-
-        <?php
-        // Mostrar mensaje de éxito o error si existe
-        if (!empty($mensaje)) {
-            echo '<div class="alert alert-info">' . $mensaje . '</div>';
-        }
-        ?>
+        <h2 class="mb-4">Modificar Reserva</h2>
 
         <form action="" method="POST">
+            <!-- Seleccionar cliente -->
             <div class="form-group">
                 <label for="cliente_id">Selecciona el Cliente:</label>
-                <select class="form-control" id="cliente_id" name="cliente_id" required onchange="redirectToClientForm(this.value)">
+                <select class="form-control" id="cliente_id" name="cliente_id" required>
                     <option value="">Selecciona un cliente</option>
                     <?php while ($cliente = $resultadoClientes->fetch_assoc()): ?>
-                        <option value="<?php echo $cliente['id']; ?>"><?php echo $cliente['nombre']; ?></option>
+                        <option value="<?php echo $cliente['id']; ?>" <?php if ($cliente['id'] == $reserva['cliente_id']) echo 'selected'; ?>>
+                            <?php echo $cliente['nombre']; ?>
+                        </option>
                     <?php endwhile; ?>
-                    <option value="nuevo">Registrar nuevo cliente</option>
                 </select>
             </div>
+
             <!-- Fila para Mesa y Menu de la Reserva -->
             <div class="row">
                 <div class="col-md-6">
@@ -119,24 +122,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
             </div>
+
+            <!-- Confirmación -->
             <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="confirmado" name="confirmado">
+                <input type="checkbox" class="form-check-input" id="confirmado" name="confirmado" <?php if ($reserva['confirmado']) echo 'checked'; ?>>
                 <label class="form-check-label" for="confirmado">Confirmar Reserva</label>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Registrar Reserva</button>
+
+            <button type="submit" class="btn btn-primary mt-3">Modificar Reserva</button>
         </form>
     </div>
 
     <script src="js/bootstrap.min.js"></script>
-
-    <script>
-        // Redirigir a la página de registro de clientes si se selecciona la opción "Registrar nuevo cliente"
-        function redirectToClientForm(value) {
-            if (value === "nuevo") {
-                window.location.href = "registro_cliente.php"; // Cambiar a la ruta real del formulario de registro de clientes
-            }
-        }
-    </script>
 </body>
 
 </html>
