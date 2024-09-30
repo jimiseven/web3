@@ -33,35 +33,58 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Cliente</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
-    <div class="container mt-5">
-        <h2 class="mb-4">Modificar Cliente</h2>
 
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $cliente['nombre']; ?>" required>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar ini -->
+        <div class="bg-dark border-rigth p-3" id="sidebar">
+            <h3 class="text-light">RESTAURANT EL SUR</h3>
+            <hr class="text-white" />
+            <div class="list-group list-reset">
+                <a href="listado_clientes.php" class="list-group-item list-group-item-action">Cliente</a>
+                <a href="listado_reservas.php" class="list-group-item list-group-item-action">Reservas</a>
+                <a href="listado_mesas.php" class="list-group-item list-group-item-action">Mesas</a>
+                <a href="listado_menus.php" class="list-group-item list-group-item-action">Platos</a>
             </div>
-            <div class="form-group">
-                <label for="correo_electronico">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="<?php echo $cliente['correo_electronico']; ?>" required>
+        </div>
+        <!-- Sidebar end -->
+        <!-- centro ini-->
+        <div class="container">
+            <div class="row align-items-center mt-5">
+                <div class="col-md-8">
+                    <h2>Registro de Clientes</h2>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="telefono">Teléfono:</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" value="<?php echo $cliente['telefono']; ?>" required>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Modificar Cliente</button>
-        </form>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $cliente['nombre']; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo_electronico">Correo Electrónico:</label>
+                    <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="<?php echo $cliente['correo_electronico']; ?>" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" value="<?php echo $cliente['telefono']; ?>" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Modificar Cliente</button>
+            </form>
+        </div>
+        <!-- centro end -->
     </div>
 
     <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
 
 <?php

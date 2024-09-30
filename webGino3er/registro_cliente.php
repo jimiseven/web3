@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,36 +39,62 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <h2 class="mt-5">Registro de Clientes</h2>
+    <div class="d-flex">
+        <!-- Sidebar ini -->
+        <div class="bg-dark border-rigth p-3" id="sidebar">
+            <h3 class="text-light">RESTAURANT EL SUR</h3>
+            <hr class="text-white" />
+            <div class="list-group list-reset">
+                <a href="listado_clientes.php" class="list-group-item list-group-item-action">Cliente</a>
+                <a href="listado_reservas.php" class="list-group-item list-group-item-action">Reservas</a>
+                <a href="listado_mesas.php" class="list-group-item list-group-item-action">Mesas</a>
+                <a href="listado_menus.php" class="list-group-item list-group-item-action">Platos</a>
+            </div>
+        </div>
+        <!-- Sidebar end -->
 
-        <?php
-        // Mostrar mensaje de éxito o error si existe
-        if (!empty($mensaje)) {
-            echo '<div class="alert alert-info">' . $mensaje . '</div>';
-        }
-        ?>
+        <!-- centro ini-->
+        <div class="container">
+            <div class="row align-items-center mt-5">
+                <div class="col-md-8">
+                    <h2>Registro de Clientes</h2>
+                </div>
+                <div class="col-md-4 text-right ml-auto">
+                    <a href="listado_clientes.php" class="btn btn-primary">Ver Listado de Clientes</a>
+                </div>
+            </div>
 
-        <form action="" method="POST">
-            <div class="form-group">
-                <label for="nombre">Nombre:</label>
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
-            </div>
-            <div class="form-group">
-                <label for="correo">Correo Electrónico:</label>
-                <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu correo electrónico" required>
-            </div>
-            <div class="form-group">
-                <label for="telefono">Teléfono:</label>
-                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingresa tu número de teléfono" required>
-            </div>
-            <button type="submit" class="btn btn-primary mt-3">Registrar</button>
-        </form>
+            <?php
+            // Mostrar mensaje de éxito o error si existe
+            if (!empty($mensaje)) {
+                echo '<div class="alert alert-info">' . $mensaje . '</div>';
+            }
+            ?>
+
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo Electrónico:</label>
+                    <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingresa tu número de teléfono" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Registrar</button>
+            </form>
+        </div>
+        <!-- centro end -->
     </div>
 
     <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
 
 <?php
