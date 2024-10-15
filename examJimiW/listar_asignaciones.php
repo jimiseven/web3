@@ -1,15 +1,16 @@
 <?php
 include 'php/conexion.php'; // Incluir la conexión a la base de datos
 
-// Consulta SQL para obtener las asignaciones de tareas y equipos
+// Consulta SQL para obtener las asignaciones de tareas y equipos, agrupando por tarea
 $sql = "
-    SELECT t.nombre AS tarea_nombre, e.marca, e.procesador, te.tarea_id, te.equipo_id
+    SELECT t.nombre AS tarea_nombre, 
+           GROUP_CONCAT(e.marca, ' - ', e.procesador SEPARATOR ', ') AS equipos_asignados
     FROM tarea_equipo te
     INNER JOIN tareas t ON te.tarea_id = t.id
     INNER JOIN equipos e ON te.equipo_id = e.id
+    GROUP BY t.id
 ";
 $resultado = $conexion->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -38,34 +39,28 @@ $resultado = $conexion->query($sql);
     <!-- Contenido central -->
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">Listado de Asiganciones</h2>
-            <a href="asignar_equipo.php" class="btn btn-primary">Añadir Asignacion</a>
+            <h2 class="mb-0">Listado de Asignaciones</h2>
+            <a href="asignar_equipo.php" class="btn btn-primary">Añadir Asignación</a>
         </div>
 
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>ID Tarea</th>
                     <th>Nombre de la Tarea</th>
-                    <th>ID Equipo</th>
-                    <th>Marca del Equipo</th>
-                    <th>Procesador del Equipo</th>
+                    <th>Equipos Asignados</th>
                 </tr>
             </thead>
             <tbody>
                 <?php if ($resultado->rowCount() > 0): ?>
                     <?php while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)): ?>
                         <tr>
-                            <td><?php echo $fila['tarea_id']; ?></td>
                             <td><?php echo $fila['tarea_nombre']; ?></td>
-                            <td><?php echo $fila['equipo_id']; ?></td>
-                            <td><?php echo $fila['marca']; ?></td>
-                            <td><?php echo $fila['procesador']; ?></td>
+                            <td><?php echo $fila['equipos_asignados']; ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
                     <tr>
-                        <td colspan="5">No hay asignaciones registradas.</td>
+                        <td colspan="2">No hay asignaciones registradas.</td>
                     </tr>
                 <?php endif; ?>
             </tbody>

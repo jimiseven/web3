@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-09-2024 a las 03:18:15
--- Versión del servidor: 10.4.20-MariaDB
--- Versión de PHP: 8.0.9
+-- Tiempo de generación: 30-09-2024 a las 02:17:20
+-- Versión del servidor: 10.4.25-MariaDB
+-- Versión de PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `clientes` (
-  `id` bigint(20) NOT NULL,
-  `nombre` text NOT NULL,
-  `correo_electronico` text NOT NULL,
-  `telefono` text DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `correo_electronico` varchar(255) NOT NULL,
+  `telefono` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `clientes`
+--
+
+INSERT INTO `clientes` (`id`, `nombre`, `correo_electronico`, `telefono`) VALUES
+(2, 'Rafael Toledo', 'rafa@gmail.com', '76999999'),
+(3, 'Samuel Marss', 'samuel@gmail.com', '76888888');
 
 -- --------------------------------------------------------
 
@@ -41,11 +49,20 @@ CREATE TABLE `clientes` (
 --
 
 CREATE TABLE `menus` (
-  `id` bigint(20) NOT NULL,
-  `nombre` text NOT NULL,
-  `descripcion` text DEFAULT NULL,
-  `url_imagen` text DEFAULT NULL
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` varchar(255) DEFAULT NULL,
+  `url_imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `menus`
+--
+
+INSERT INTO `menus` (`id`, `nombre`, `descripcion`, `url_imagen`) VALUES
+(1, 'Pato a la naranja', 'Pato a la naranja con acompañamiento de ensaladas y arroz', 'imgs/patoNaranja.jpg'),
+(2, 'Pampaku', 'Chancho y pollo hecho bajo tierra ', 'imgs/pampaku.jpeg'),
+(3, 'Plato especiall', 'especial', 'imgs/chanchoCruz.jpeg');
 
 -- --------------------------------------------------------
 
@@ -54,11 +71,20 @@ CREATE TABLE `menus` (
 --
 
 CREATE TABLE `mesas` (
-  `id` bigint(20) NOT NULL,
+  `id` int(11) NOT NULL,
   `numero_mesa` int(11) NOT NULL,
   `capacidad` int(11) NOT NULL,
-  `ubicacion` text DEFAULT NULL
+  `ubicacion` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `mesas`
+--
+
+INSERT INTO `mesas` (`id`, `numero_mesa`, `capacidad`, `ubicacion`) VALUES
+(1, 1, 22, 'Terraza'),
+(2, 2, 25, 'Terraza'),
+(4, 6, 15, 'Interior');
 
 -- --------------------------------------------------------
 
@@ -67,14 +93,24 @@ CREATE TABLE `mesas` (
 --
 
 CREATE TABLE `reservas` (
-  `id` bigint(20) NOT NULL,
-  `cliente_id` bigint(20) DEFAULT NULL,
-  `mesa_id` bigint(20) DEFAULT NULL,
-  `menu_id` bigint(20) DEFAULT NULL,
-  `hora_reserva` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `solicitudes_especiales` text DEFAULT NULL,
+  `id` int(11) NOT NULL,
+  `cliente_id` int(11) DEFAULT NULL,
+  `mesa_id` int(11) DEFAULT NULL,
+  `menu_id` int(11) DEFAULT NULL,
+  `hora_reserva` time NOT NULL DEFAULT curtime(),
+  `fecha_reserva` date NOT NULL DEFAULT curdate(),
   `confirmado` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reservas`
+--
+
+INSERT INTO `reservas` (`id`, `cliente_id`, `mesa_id`, `menu_id`, `hora_reserva`, `fecha_reserva`, `confirmado`) VALUES
+(1, 2, 1, 2, '21:49:00', '2024-10-06', 1),
+(3, 3, 1, 1, '19:00:00', '2024-10-04', 1),
+(4, 2, 2, 1, '23:09:00', '2024-09-26', 0),
+(5, 2, 1, 2, '20:08:00', '2024-09-11', 1);
 
 --
 -- Índices para tablas volcadas
@@ -85,7 +121,7 @@ CREATE TABLE `reservas` (
 --
 ALTER TABLE `clientes`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `correo_electronico` (`correo_electronico`) USING HASH;
+  ADD UNIQUE KEY `correo_electronico` (`correo_electronico`);
 
 --
 -- Indices de la tabla `menus`
@@ -117,25 +153,25 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `mesas`
 --
 ALTER TABLE `mesas`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas

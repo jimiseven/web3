@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Tarea</title>
+    <title>Detalle Tarea</title>
     <!-- Bootstrap local -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css" />
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Contenido central -->
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">Registrar de Tareas</h2>
+            <h2 class="mb-0">Detalle de Tareas</h2>
             <a href="listar_tareas.php" class="btn btn-primary">Listado</a>
         </div>
 
