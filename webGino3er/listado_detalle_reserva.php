@@ -2,26 +2,19 @@
 // Incluir el archivo de conexión
 include 'php/conexion.php';
 
-// Consulta SQL para obtener todas las reservas con detalles del cliente, mesa y menús
+// Consulta SQL para obtener las reservas con detalles generales
 $sql = "SELECT 
-            reservas.id AS reserva_id, 
-            clientes.nombre AS cliente_nombre, 
-            mesas.numero_mesa AS mesa_numero, 
-            mesas.capacidad AS mesa_capacidad, 
-            mesas.ubicacion AS mesa_ubicacion, 
-            GROUP_CONCAT(menus.nombre SEPARATOR ', ') AS menu_nombres, 
-            reservas.hora_reserva, 
-            reservas.fecha_reserva, 
-            reservas.confirmado 
+            reservas.id AS reserva_id,
+            clientes.nombre AS cliente_nombre,
+            mesas.numero_mesa AS mesa_numero,
+            reservas.fecha_reserva,
+            reservas.hora_reserva
         FROM reservas
         JOIN clientes ON reservas.cliente_id = clientes.id
         JOIN mesas ON reservas.mesa_id = mesas.id
-        LEFT JOIN detalle_reserva ON reservas.id = detalle_reserva.reserva_id
-        LEFT JOIN menus ON detalle_reserva.menu_id = menus.id
         GROUP BY reservas.id";
 
 $resultado = $conn->query($sql);
-
 ?>
 
 <!DOCTYPE html>
@@ -32,8 +25,7 @@ $resultado = $conn->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listado de Reservas</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css" />
-
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
@@ -51,26 +43,26 @@ $resultado = $conn->query($sql);
             </div>
         </div>
         <!-- Sidebar end -->
+
         <!-- centro ini-->
         <div class="container mt-5">
             <div class="row align-items-center mt-5">
                 <div class="col-md-8">
-                    <h2>Listado reservas</h2>
+                    <h2>Listado de Reservas</h2>
                 </div>
                 <div class="col-md-4 text-right ml-auto">
-                    <a href="registro_reserva.php" class="btn btn-primary">Registro reserva</a>
+                    <a href="registro_orden.php" class="btn btn-primary">Registrar Orden</a>
                 </div>
             </div>
+
             <?php if ($resultado->num_rows > 0): ?>
-                <table class="table table-striped">
+                <table class="table table-striped mt-4">
                     <thead>
                         <tr>
                             <th>Cliente</th>
                             <th>Mesa</th>
-                            <th>Menús</th>
                             <th>Fecha</th>
                             <th>Hora</th>
-                            <th>Confirmado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -78,16 +70,12 @@ $resultado = $conn->query($sql);
                         <?php while ($fila = $resultado->fetch_assoc()): ?>
                             <tr>
                                 <td><?php echo $fila['cliente_nombre']; ?></td>
-                                <td>
-                                    Mesa #<?php echo $fila['mesa_numero']; ?> - Capacidad: <?php echo $fila['mesa_capacidad']; ?> - Ubicación: <?php echo ucfirst($fila['mesa_ubicacion']); ?>
-                                </td>
-                                <td><?php echo $fila['menu_nombres']; ?></td>
+                                <td>Mesa #<?php echo $fila['mesa_numero']; ?></td>
                                 <td><?php echo $fila['fecha_reserva']; ?></td>
                                 <td><?php echo $fila['hora_reserva']; ?></td>
-                                <td><?php echo $fila['confirmado'] ? 'Sí' : 'No'; ?></td>
                                 <td>
-                                    <a href="modificar_reserva.php?id=<?php echo $fila['reserva_id']; ?>" class="btn btn-warning btn-sm">Modificar</a>
-                                    <a href="eliminar_reserva.php?id=<?php echo $fila['reserva_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta reserva?');">Eliminar</a>
+                                    <!-- Botón para ver los detalles de la reserva -->
+                                    <a href="detalle_reserva.php?id=<?php echo $fila['reserva_id']; ?>" class="btn btn-info btn-sm">Ver Detalle</a>
                                 </td>
                             </tr>
                         <?php endwhile; ?>

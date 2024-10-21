@@ -30,6 +30,7 @@ $resultado = $conn->query($sql);
                 <a href="listado_reservas.php" class="list-group-item list-group-item-action">Reservas</a>
                 <a href="listado_mesas.php" class="list-group-item list-group-item-action">Mesas</a>
                 <a href="listado_menus.php" class="list-group-item list-group-item-action">Platos</a>
+                <a href="listado_detalle_reserva.php" class="list-group-item list-group-item-action">Ordenes</a>
             </div>
         </div>
         <!-- Sidebar end -->
