@@ -19,25 +19,38 @@ $resultadoPlatos = $conn->query($sqlPlatos);
 // Verificar si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $reserva_id = $_POST['reserva_id'];
-    $platos = $_POST['plato_id']; // Array con los IDs de los platos seleccionados
-    $cantidades = $_POST['cantidad']; // Array con las cantidades de cada plato
+    $platos = isset($_POST['plato_id']) ? $_POST['plato_id'] : []; // Array con los IDs de los platos seleccionados
+    $cantidades = isset($_POST['cantidad']) ? $_POST['cantidad'] : []; // Array con las cantidades de cada plato
 
     // Validar que se haya seleccionado una reserva y al menos un plato
     if (!empty($reserva_id) && !empty($platos) && !empty($cantidades)) {
-        // Insertar los detalles de la orden en la tabla 'detalle_reserva'
+        $valid = true; // Flag para validar todo
+        $conn->begin_transaction(); // Iniciar una transacción para asegurar atomicidad
+
         for ($i = 0; $i < count($platos); $i++) {
             $plato_id = $platos[$i];
             $cantidad = $cantidades[$i];
-            if (!empty($cantidad) && $cantidad > 0) {
-                // Insertar cada plato en la tabla detalle_reserva
-                $sqlDetalle = "INSERT INTO detalle_reserva (reserva_id, menu_id, cantidad) VALUES ('$reserva_id', '$plato_id', '$cantidad')";
-                $conn->query($sqlDetalle);
+
+            // Validar que la cantidad sea mayor a 0 y que el plato haya sido seleccionado
+            if (!empty($plato_id) && !empty($cantidad) && $cantidad > 0) {
+                $sqlDetalle = "INSERT INTO detalle_reserva (reserva_id, menu_id, cantidad) 
+                               VALUES ('$reserva_id', '$plato_id', '$cantidad')";
+                if (!$conn->query($sqlDetalle)) {
+                    $valid = false; // Si alguna inserción falla, marcar como inválido
+                    $mensaje = "Error al registrar el detalle: " . $conn->error;
+                    break; // Romper el bucle si hay error
+                }
             }
         }
 
-        $mensaje = "Orden registrada con éxito en detalle_reserva";
+        if ($valid) {
+            $conn->commit(); // Confirmar la transacción
+            $mensaje = "Orden registrada con éxito en detalle_reserva";
+        } else {
+            $conn->rollback(); // Deshacer todos los cambios si hubo error
+        }
     } else {
-        $mensaje = "Por favor, selecciona una reserva y al menos un plato.";
+        $mensaje = "Por favor, selecciona una reserva, al menos un plato y una cantidad válida.";
     }
 }
 ?>
@@ -64,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <a href="listado_reservas.php" class="list-group-item list-group-item-action">Reservas</a>
                 <a href="listado_mesas.php" class="list-group-item list-group-item-action">Mesas</a>
                 <a href="listado_menus.php" class="list-group-item list-group-item-action">Platos</a>
-                <a href="listado_detalle_reserva.php" class="list-group-item list-group-item-action">Ordenes</a>
+                <a href="listado_detalle_reserva.php" class="list-group-item list-group-item-action">Órdenes</a>
             </div>
         </div>
         <!-- Sidebar end -->
