@@ -2,21 +2,23 @@
 // Incluir el archivo de conexión
 include 'php/conexion.php';
 
-// Consulta SQL para obtener todas las reservas con detalles del cliente, mesa y menú
+// Consulta SQL para obtener todas las reservas con detalles del cliente, mesa y menús
 $sql = "SELECT 
             reservas.id AS reserva_id, 
             clientes.nombre AS cliente_nombre, 
             mesas.numero_mesa AS mesa_numero, 
             mesas.capacidad AS mesa_capacidad, 
             mesas.ubicacion AS mesa_ubicacion, 
-            menus.nombre AS menu_nombre, 
+            GROUP_CONCAT(menus.nombre SEPARATOR ', ') AS menu_nombres, 
             reservas.hora_reserva, 
             reservas.fecha_reserva, 
             reservas.confirmado 
         FROM reservas
         JOIN clientes ON reservas.cliente_id = clientes.id
         JOIN mesas ON reservas.mesa_id = mesas.id
-        JOIN menus ON reservas.menu_id = menus.id";
+        LEFT JOIN detalle_reserva ON reservas.id = detalle_reserva.reserva_id
+        LEFT JOIN menus ON detalle_reserva.menu_id = menus.id
+        GROUP BY reservas.id";
 
 $resultado = $conn->query($sql);
 
@@ -64,7 +66,7 @@ $resultado = $conn->query($sql);
                         <tr>
                             <th>Cliente</th>
                             <th>Mesa</th>
-                            <th>Menú</th>
+                            <th>Menús</th>
                             <th>Fecha</th>
                             <th>Hora</th>
                             <th>Confirmado</th>
@@ -78,7 +80,7 @@ $resultado = $conn->query($sql);
                                 <td>
                                     Mesa #<?php echo $fila['mesa_numero']; ?> - Capacidad: <?php echo $fila['mesa_capacidad']; ?> - Ubicación: <?php echo ucfirst($fila['mesa_ubicacion']); ?>
                                 </td>
-                                <td><?php echo $fila['menu_nombre']; ?></td>
+                                <td><?php echo $fila['menu_nombres']; ?></td>
                                 <td><?php echo $fila['fecha_reserva']; ?></td>
                                 <td><?php echo $fila['hora_reserva']; ?></td>
                                 <td><?php echo $fila['confirmado'] ? 'Sí' : 'No'; ?></td>

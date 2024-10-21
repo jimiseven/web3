@@ -13,24 +13,19 @@ $resultadoClientes = $conn->query($sqlClientes);
 $sqlMesas = "SELECT id, numero_mesa, capacidad, ubicacion FROM mesas";
 $resultadoMesas = $conn->query($sqlMesas);
 
-// Obtener los menús disponibles
-$sqlMenus = "SELECT id, nombre FROM menus";
-$resultadoMenus = $conn->query($sqlMenus);
-
 // Verificar si el formulario ha sido enviado
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $cliente_id = $_POST['cliente_id'];
     $mesa_id = $_POST['mesa_id'];
-    $menu_id = $_POST['menu_id'];
     $hora_reserva = $_POST['hora_reserva'];
     $fecha_reserva = $_POST['fecha_reserva'];
     $confirmado = isset($_POST['confirmado']) ? 1 : 0; // Checkbox
 
     // Validar los datos antes de insertarlos
-    if (!empty($cliente_id) && !empty($mesa_id) && !empty($menu_id) && !empty($hora_reserva) && !empty($fecha_reserva)) {
-        // Preparar la consulta SQL
-        $sql = "INSERT INTO reservas (cliente_id, mesa_id, menu_id, hora_reserva, fecha_reserva, confirmado) 
-                VALUES ('$cliente_id', '$mesa_id', '$menu_id', '$hora_reserva', '$fecha_reserva', '$confirmado')";
+    if (!empty($cliente_id) && !empty($mesa_id) && !empty($hora_reserva) && !empty($fecha_reserva)) {
+        // Preparar la consulta SQL para insertar la reserva
+        $sql = "INSERT INTO reservas (cliente_id, mesa_id, hora_reserva, fecha_reserva, confirmado) 
+                VALUES ('$cliente_id', '$mesa_id', '$hora_reserva', '$fecha_reserva', '$confirmado')";
 
         // Ejecutar la consulta
         if ($conn->query($sql) === TRUE) {
@@ -97,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <option value="nuevo">Registrar nuevo cliente</option>
                     </select>
                 </div>
-                <!-- Fila para Mesa y Menu de la Reserva -->
+                <!-- Fila para Mesa de la Reserva -->
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
@@ -108,17 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <option value="<?php echo $mesa['id']; ?>">
                                         Mesa #<?php echo $mesa['numero_mesa']; ?> - Capacidad: <?php echo $mesa['capacidad']; ?> - Ubicación: <?php echo ucfirst($mesa['ubicacion']); ?>
                                     </option>
-                                <?php endwhile; ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="menu_id">Selecciona el Menú:</label>
-                            <select class="form-control" id="menu_id" name="menu_id" required>
-                                <option value="">Selecciona un menú</option>
-                                <?php while ($menu = $resultadoMenus->fetch_assoc()): ?>
-                                    <option value="<?php echo $menu['id']; ?>"><?php echo $menu['nombre']; ?></option>
                                 <?php endwhile; ?>
                             </select>
                         </div>

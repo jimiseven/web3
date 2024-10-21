@@ -29,6 +29,7 @@ $resultadoPlatos = $conn->query($sqlPlatos);
                 <a href="listado_reservas.php" class="list-group-item list-group-item-action">Reservas</a>
                 <a href="listado_mesas.php" class="list-group-item list-group-item-action">Mesas</a>
                 <a href="listado_menus.php" class="list-group-item list-group-item-action">Platos</a>
+                <a href="listado_menus.php" class="list-group-item list-group-item-action">Orden</a>
             </div>
         </div>
         <!-- Sidebar end -->

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2024 a las 02:17:20
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Tiempo de generación: 21-10-2024 a las 22:42:08
+-- Versión del servidor: 10.4.20-MariaDB
+-- Versión de PHP: 8.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -40,7 +40,8 @@ CREATE TABLE `clientes` (
 
 INSERT INTO `clientes` (`id`, `nombre`, `correo_electronico`, `telefono`) VALUES
 (2, 'Rafael Toledo', 'rafa@gmail.com', '76999999'),
-(3, 'Samuel Marss', 'samuel@gmail.com', '76888888');
+(3, 'Samuel Marss', 'samuel@gmail.com', '76888888'),
+(5, 'Gino Torrico Peredo', 'anibal@gmail.com', '1111111111');
 
 -- --------------------------------------------------------
 
@@ -62,7 +63,8 @@ CREATE TABLE `menus` (
 INSERT INTO `menus` (`id`, `nombre`, `descripcion`, `url_imagen`) VALUES
 (1, 'Pato a la naranja', 'Pato a la naranja con acompañamiento de ensaladas y arroz', 'imgs/patoNaranja.jpg'),
 (2, 'Pampaku', 'Chancho y pollo hecho bajo tierra ', 'imgs/pampaku.jpeg'),
-(3, 'Plato especiall', 'especial', 'imgs/chanchoCruz.jpeg');
+(3, 'Plato especiall', 'especial', 'imgs/chanchoCruz.jpeg'),
+(4, 'lechon', 'plato principal', 'imgs/pampaku.jpeg');
 
 -- --------------------------------------------------------
 
@@ -84,7 +86,8 @@ CREATE TABLE `mesas` (
 INSERT INTO `mesas` (`id`, `numero_mesa`, `capacidad`, `ubicacion`) VALUES
 (1, 1, 22, 'Terraza'),
 (2, 2, 25, 'Terraza'),
-(4, 6, 15, 'Interior');
+(4, 6, 15, 'Interior'),
+(5, 3, 2, 'Jardin');
 
 -- --------------------------------------------------------
 
@@ -110,7 +113,9 @@ INSERT INTO `reservas` (`id`, `cliente_id`, `mesa_id`, `menu_id`, `hora_reserva`
 (1, 2, 1, 2, '21:49:00', '2024-10-06', 1),
 (3, 3, 1, 1, '19:00:00', '2024-10-04', 1),
 (4, 2, 2, 1, '23:09:00', '2024-09-26', 0),
-(5, 2, 1, 2, '20:08:00', '2024-09-11', 1);
+(5, 2, 1, 2, '20:08:00', '2024-09-11', 1),
+(6, 5, 5, 4, '22:00:00', '2024-10-01', 0),
+(7, 2, 1, 1, '17:15:00', '2024-10-16', 1);
 
 --
 -- Índices para tablas volcadas
@@ -153,25 +158,25 @@ ALTER TABLE `reservas`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `mesas`
 --
 ALTER TABLE `mesas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `reservas`
 --
 ALTER TABLE `reservas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Restricciones para tablas volcadas
