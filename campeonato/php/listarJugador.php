@@ -62,7 +62,17 @@
         <?php endwhile; ?>
     </table>
     <br>
+
+    <!-- Botón para imprimir la página -->
+    <button onclick="window.print()">Imprimir esta página</button>
+
+    <!-- Botón para descargar como Excel -->
+    <form method="POST" action="exportarExcel.php" style="display: inline;">
+        <button type="submit">Descargar Excel</button>
+    </form>
+
     <button><a href="insertarJugador.php">Insertar Jugador</a></button>
     <button><a href="../index.html">Ir al inicio</a></button> 
+
 </body>
 </html>

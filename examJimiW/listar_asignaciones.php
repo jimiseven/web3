@@ -10,7 +10,13 @@ $sql = "
     INNER JOIN equipos e ON te.equipo_id = e.id
     GROUP BY t.id
 ";
+
+// Ejecutar la consulta y manejar errores
 $resultado = $conexion->query($sql);
+if (!$resultado) {
+    echo "Error en la consulta SQL: " . $conexion->errorInfo()[2];
+    exit; // Detiene la ejecución si hay un error en la consulta
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +46,10 @@ $resultado = $conexion->query($sql);
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Listado de Asignaciones</h2>
-            <a href="asignar_equipo.php" class="btn btn-primary">Añadir Asignación</a>
+            <div>
+                <a href="asignar_equipo.php" class="btn btn-primary">Añadir Asignación</a>
+                <button onclick="window.print()" class="btn btn-secondary ms-2">Imprimir</button> <!-- Botón de impresión -->
+            </div>
         </div>
 
         <table class="table table-striped">
@@ -54,8 +63,8 @@ $resultado = $conexion->query($sql);
                 <?php if ($resultado->rowCount() > 0): ?>
                     <?php while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)): ?>
                         <tr>
-                            <td><?php echo $fila['tarea_nombre']; ?></td>
-                            <td><?php echo $fila['equipos_asignados']; ?></td>
+                            <td><?php echo htmlspecialchars($fila['tarea_nombre']); ?></td>
+                            <td><?php echo htmlspecialchars($fila['equipos_asignados']); ?></td>
                         </tr>
                     <?php endwhile; ?>
                 <?php else: ?>
