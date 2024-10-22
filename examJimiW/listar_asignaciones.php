@@ -3,20 +3,14 @@ include 'php/conexion.php'; // Incluir la conexión a la base de datos
 
 // Consulta SQL para obtener las asignaciones de tareas y equipos, agrupando por tarea
 $sql = "
-    SELECT t.nombre AS tarea_nombre, 
+    SELECT t.id AS tarea_id, t.nombre AS tarea_nombre, 
            GROUP_CONCAT(e.marca, ' - ', e.procesador SEPARATOR ', ') AS equipos_asignados
     FROM tarea_equipo te
     INNER JOIN tareas t ON te.tarea_id = t.id
     INNER JOIN equipos e ON te.equipo_id = e.id
     GROUP BY t.id
 ";
-
-// Ejecutar la consulta y manejar errores
 $resultado = $conexion->query($sql);
-if (!$resultado) {
-    echo "Error en la consulta SQL: " . $conexion->errorInfo()[2];
-    exit; // Detiene la ejecución si hay un error en la consulta
-}
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +21,7 @@ if (!$resultado) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Asignaciones</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css" /> <!-- Asegúrate de tener el archivo Bootstrap local -->
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
@@ -76,11 +70,7 @@ if (!$resultado) {
         </table>
     </div>
     <!-- Contenido central fin-->
-    <script src="js/bootstrap.bundle.min.js"></script> <!-- Asegúrate de tener el archivo Bootstrap local -->
+    <script src="js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
-
-<?php
-// $conexion = null; // Cerrar la conexión
-?>
