@@ -42,7 +42,9 @@ $resultado = $conexion->query($sql);
             <h2 class="mb-0">Listado de Asignaciones</h2>
             <div>
                 <a href="asignar_equipo.php" class="btn btn-primary">Añadir Asignación</a>
-                <button onclick="window.print()" class="btn btn-secondary ms-2">Imprimir</button> <!-- Botón de impresión -->
+                <a href="reporte_excel_asignaciones.php" class="btn btn-secondary ms-2">Excel</a>
+                <a href="reporte_pdf_asignaciones.php" class="btn btn-secondary ms-2">PDF</a>
+                <a href="reporte_word_asignaciones.php" class="btn btn-secondary ms-2">Word</a>
             </div>
         </div>
 

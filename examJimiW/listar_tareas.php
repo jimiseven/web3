@@ -45,6 +45,11 @@ try {
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Listado de Tareas</h2>
             <a href="registro_tareas.php" class="btn btn-primary">Añadir Tarea</a>
+            <div class="btn-group">
+                <a href="reporte_excel_tareas.php" class="btn btn-secondary">Excel</a>
+                <a href="reporte_pdf_tareas.php" class="btn btn-secondary">PDF</a>
+                <a href="reporte_word_tareas.php" class="btn btn-secondary">Word</a>
+            </div>
         </div>
 
         <table class="table table-bordered table-hover">

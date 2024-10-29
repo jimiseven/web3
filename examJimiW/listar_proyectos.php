@@ -43,6 +43,11 @@ try {
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Listado de Proyectos</h2>
             <a href="registro_proyectos.php" class="btn btn-primary">Añadir Proyecto</a>
+            <div class="btn-group">
+                <a href="reporte_excel_proyectos.php" class="btn btn-secondary">Excel</a>
+                <a href="reporte_pdf_proyectos.php" class="btn btn-secondary">PDF</a>
+                <a href="reporte_word_proyectos.php" class="btn btn-secondary">Word</a>
+            </div>
         </div>
 
         <table class="table table-bordered table-hover">
