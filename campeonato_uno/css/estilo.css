@@ -1,0 +1,18 @@
+* html{
+    font-family: segoe UI Light;
+    background: FFFF;
+    text-align: center;
+}
+.block{
+    background: #ddd;
+    margin: 1em 2em ;
+    padding: 1em 3em;
+    text-align: left;
+}
+.form{
+    background: #ddd;
+    margin: 2em;
+    padding: 3em;
+    width: 30em;
+    margin-left: 3em;
+}
