@@ -4,10 +4,9 @@ include 'php/conexion.php';
 
 // Consultar todas las tareas
 try {
-    $sql = "SELECT tareas.*, proyectos.nombre AS nombre_proyecto, empleados.nombre AS nombre_empleado 
+    $sql = "SELECT tareas.*, proyectos.nombre AS nombre_proyecto 
             FROM tareas
-            JOIN proyectos ON tareas.proyecto_id = proyectos.id
-            JOIN empleados ON tareas.empleado_id = empleados.id";
+            JOIN proyectos ON tareas.proyecto_id = proyectos.id";
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
     $tareas = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -62,7 +61,6 @@ try {
                     <th>Fecha Fin</th>
                     <th>Estado</th>
                     <th>Proyecto</th>
-                    <th>Empleado Responsable</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -83,7 +81,6 @@ try {
                         <td><?php echo htmlspecialchars($tarea['fecha_fin']); ?></td>
                         <td><?php echo htmlspecialchars($tarea['estado']); ?></td>
                         <td><?php echo htmlspecialchars($tarea['nombre_proyecto']); ?></td>
-                        <td><?php echo htmlspecialchars($tarea['nombre_empleado']); ?></td>
                         <td>
                             <!-- Enlace para modificar -->
                             <a href="editar_tarea.php?id=<?php echo $tarea['id']; ?>" class="btn btn-warning btn-sm">Modificar</a>

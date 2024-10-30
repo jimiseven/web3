@@ -1,15 +1,13 @@
 <?php
 include 'php/conexion.php';
 
-// Obtener datos
-$sql = "
-    SELECT t.nombre AS tarea_nombre, 
-           GROUP_CONCAT(e.marca, ' - ', e.procesador SEPARATOR ', ') AS equipos_asignados
-    FROM tarea_equipo te
-    INNER JOIN tareas t ON te.tarea_id = t.id
-    INNER JOIN equipos e ON te.equipo_id = e.id
-    GROUP BY t.id
-";
+// Obtener datos de las asignaciones
+$sql = "SELECT tareas.nombre AS nombre_tarea, empleados.nombre AS nombre_empleado, 
+               empleados_tarea.fecha_inicio, empleados_tarea.fecha_fin
+        FROM empleados_tarea
+        JOIN empleados ON empleados_tarea.empleado_id = empleados.id
+        JOIN tareas ON empleados_tarea.tarea_id = tareas.id
+        ORDER BY tareas.id, empleados_tarea.fecha_inicio";
 $stmt = $conexion->prepare($sql);
 $stmt->execute();
 $asignaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -19,21 +17,29 @@ $asignaciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Reporte de Asignaciones - PDF</title>
+    <title>Reporte de Asignaciones</title>
     <style>
         table { width: 100%; border-collapse: collapse; }
         th, td { padding: 8px; border: 1px solid #ddd; text-align: left; }
         th { background-color: #f2f2f2; }
     </style>
 </head>
-<body onload="window.print()">
-    <h2>Reporte de Asignaciones</h2>
+<body>
+    <h2>Listado de Asignaciones</h2>
+    <button onclick="window.print()">Descargar PDF</button>
     <table>
-        <tr><th>Nombre de la Tarea</th><th>Equipos Asignados</th></tr>
+        <tr>
+            <th>Tarea</th>
+            <th>Empleado Asignado</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha de Fin</th>
+        </tr>
         <?php foreach ($asignaciones as $asignacion): ?>
             <tr>
-                <td><?php echo htmlspecialchars($asignacion['tarea_nombre']); ?></td>
-                <td><?php echo htmlspecialchars($asignacion['equipos_asignados']); ?></td>
+                <td><?php echo htmlspecialchars($asignacion['nombre_tarea']); ?></td>
+                <td><?php echo htmlspecialchars($asignacion['nombre_empleado']); ?></td>
+                <td><?php echo htmlspecialchars($asignacion['fecha_inicio']); ?></td>
+                <td><?php echo htmlspecialchars($asignacion['fecha_fin']); ?></td>
             </tr>
         <?php endforeach; ?>
     </table>

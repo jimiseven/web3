@@ -1,7 +1,7 @@
 <?php
 // Datos de la base de datos
 $host = 'localhost';  // O el host de tu servidor de base de datos
-$dbname = 'proyectosinfo';  // Nombre de la base de datos (ajustar según sea necesario)
+$dbname = 'proyectos2';  // Nombre de la base de datos (ajustar según sea necesario)
 $user = 'root';  // Usuario de la base de datos
 $password = '';  // Contraseña del usuario de la base de datos (ajustar según sea necesario)
 
