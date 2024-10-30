@@ -21,7 +21,7 @@ $resultado = $conexion->query($sql); // Ejecutar la consulta
 <body>
     <!-- Sidebar -->
     <div class="sidebar">
-        <a href="index.html" class="text-light text-center">AdmiPro</a>
+        <a href="index.html" class="text-light text-center">AdmiProd</a>
         <a href="listar_empleados.php">Empleados</a>
         <a href="listar_proyectos.php">Proyectos</a>
         <a href="listar_tareas.php">Tareas</a>
